@@ -1,0 +1,10 @@
+{
+  "api": {
+    "baseUrl": "/api"
+  },
+  "paths": {
+    "imagesRoot": "/assets/images/",
+    "userImageFolder": "/assets/images/users/"
+  },
+  "debugging": true
+}

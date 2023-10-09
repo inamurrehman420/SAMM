@@ -1,0 +1,21 @@
+<div class="sidebar">
+    <div class="sidebar-header">
+        <div class="logo d-flex">
+            <img src="assets/main-logo.png"/>
+<!--          <span class="fw-bold ms-4 align-self-center title lg text-white">HEALTHCARE</span>-->
+        </div>
+    </div>
+    <div class="sidebar-menu-container">
+      <p-panelMenu class="panelMenu-list" [model]="items"></p-panelMenu>
+    </div>
+  </div>
+
+  <p-confirmDialog #cd [breakpoints]="{ '1500px': '80vw','960px': '95vw' }" [style]="{width: '25vw'}">
+    <ng-template pTemplate="header">
+        <p class="title">Logout</p>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button class="btn btn-secondary" (click)="cd.reject()">Cencel</button>
+        <button class="btn btn-primary" (click)="cd.accept()">Confirm</button>
+    </ng-template>
+</p-confirmDialog>

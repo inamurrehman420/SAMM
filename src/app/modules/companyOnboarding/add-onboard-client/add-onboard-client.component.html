@@ -1,0 +1,138 @@
+<div class="container mt-3">
+    <div class="row px-3">
+        <div class="col-lg-6">
+            <h3 class="text-primary fw-bold mt-3 text-2xl">OnBoard Company
+            </h3>
+        </div>
+        <div class="col-lg-6 text-right">
+            <button  mat-button (click)="onClose()">
+                <mat-icon class="mx-0">clear</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="container px-3 pt-3">
+    <form
+    class="mt-6"
+    [formGroup]="onBoardForm">
+
+    <div class="row mb-3 px-3">
+        <div class="col-lg-6">
+            <mat-form-field class="w-100">
+                <mat-label>Company Name</mat-label>
+                <input 
+                matInput 
+                placeholder="Enter Company Name" 
+                [formControlName]="'companyName'" 
+                required>
+                <mat-error>Company Name Required</mat-error>
+              </mat-form-field>
+        </div>
+
+        <div class="col-lg-6">
+            <mat-form-field class="w-100">
+                <mat-label>Registration Number</mat-label>
+                <input 
+                matInput 
+                placeholder="Enter Registration Number" 
+                [formControlName]="'registrationNumber'" 
+                required>
+                <mat-error>Registration Number Required</mat-error>
+              </mat-form-field>
+        </div>
+    </div>
+
+    <div class="row mb-3  px-3">
+        <div class="col-lg-6">
+            <mat-form-field class="w-100">
+                <mat-label>Representative Name</mat-label>
+                <input
+                        matInput
+                        placeholder="Enter Representative Name"
+                        [formControlName]="'representativeName'"
+                        required>
+                <mat-error>Representative Name Required</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field class="w-100">
+                <mat-label>Postal Address</mat-label>
+                <input 
+                matInput 
+                placeholder="Enter Postal Address" 
+                [formControlName]="'postalAdress'" 
+                required>
+                <mat-error>Postal Address Required</mat-error>
+              </mat-form-field>
+            </div>
+
+
+    </div>
+
+
+
+
+
+        <div class="row mb-3  px-3">
+            <div class="col-lg-6">
+                <mat-form-field class="w-100">
+                    <mat-label>Representative Number</mat-label>
+                    <input
+                            matInput
+                            placeholder="Enter Representative Number"
+                            [formControlName]="'representativeNumber'"
+                            required>
+                    <mat-error>Representative Number Required</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-lg-6">
+                <mat-form-field class="w-100">
+                    <mat-label>Representative Email</mat-label>
+                    <input 
+                    matInput 
+                    placeholder="Enter Representative Email" 
+                    [formControlName]="'representativeEmail'" 
+                    required>
+                    <mat-error>Representative Email Required</mat-error>
+                  </mat-form-field>
+            </div>
+            
+
+        </div>
+
+        <div class="row mb-3  px-3">
+            <div class="col-lg-6">
+                <mat-form-field color="accent" class="w-100">
+                    <mat-label>Select Start Date</mat-label>
+                    <input matInput [matDatepicker]="picker"  [formControlName]="'start_date'" required>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker color="primary"></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="col-lg-6">
+
+                <mat-form-field color="accent" class="w-100">
+                    <mat-label>Select End Date</mat-label>
+                    <input matInput [matDatepicker]="picker2"  [formControlName]="'end_date'" required>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2 color="primary"></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+
+        </div>
+
+
+
+    </form>
+    <div class="text-right mb-3 mt-4 py-3 me-3">
+   <button  mat-raised-button color="primary" class="mr-3 bg-secondary" (click)="onSubmit()">
+        Submit
+    </button>
+    <button  mat-raised-button    color="primary" (click)="onClose()">
+        Cancel
+    </button>
+
+  </div>
+  </div>

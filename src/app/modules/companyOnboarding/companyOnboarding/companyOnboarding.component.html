@@ -1,0 +1,151 @@
+<div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+          <div class="text-2xl font-bold">Onboard Company</div>
+      </div>
+  </div>
+      <div class="row mb-3 mt-3">
+  <div class="col-lg-6">
+    <mat-form-field class="mr-3">
+        <mat-label>Select</mat-label>
+        <mat-select [formControl]="searchSelect">
+          <mat-option *ngFor="let search of searchList" [value]="search">{{search}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="w-50">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="search" #input>
+        <button mat-button matSuffix>
+          <mat-icon>search</mat-icon>
+        </button>
+      </mat-form-field>
+  </div>
+  <div class="col-lg-6 text-end place-self-end">
+      <button color="primary" (click)="onAddBoarding($event)"  mat-raised-button>
+          <mat-icon>add</mat-icon>
+          Onboard New Company
+      </button>
+  </div>
+</div>
+
+    <div class="table-responsive w-100 rounded mat-elevation-z8">
+        <table class="table w-100 mb-0">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Company Name</th>
+                <th scope="col">Registration Number</th>
+                <th scope="col">Postal Address</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">End Date</th>
+                <th scope="col">Representive Name</th>
+                <th scope="col">Representive Number</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let client of clients; let i = index"  class="accordion-toggle collapsed"
+                id="accordion1"
+                data-mdb-toggle="collapse"
+                data-mdb-parent="#accordion1"
+                href="#collapseOne"
+                aria-controls="collapseOne"
+            >
+                <td class="expand-button font-extrabold text-2xl"></td>
+                <td>{{ client.companyName }}</td>
+                <td>{{ client.registrationNumber }}</td>
+                <td  matTooltipPosition="above" matTooltipClass="custom-tooltip"  matTooltip="{{client.postalAddress}}">{{ client.postalAddress | textTruncate:15}}</td>
+                <td>{{ client.startDate }}</td>
+                <td>{{ client.endDate }}</td>
+                <td>{{ client.representativeName }}</td>
+                <td>{{ client.representativeNumber }}</td>
+                <td>
+
+                 <mat-icon class="me-2 pointer position-relative" color="primary" style="z-index: 99999" (click)="onAddBoarding($event)" matTooltipPosition="above" matTooltipClass="custom-tooltip" matTooltip="click to edit">edit</mat-icon>
+
+
+                 <mat-icon class="pointer position-relative" (click)="onDelete($event)" style="z-index: 99999" color="warn" matTooltipPosition="above" matTooltipClass="custom-tooltip"  matTooltip="click to delete">delete</mat-icon>
+
+                </td>
+
+            </tr>
+            <tr class="hide-table-padding">
+<td>
+
+</td>
+                <td colspan="8">
+                    <div id="collapseOne" class="collapse in py-3 pe-4">
+                        <table class="w-100 border rounded pe-3">
+                            <thead>
+                            <tr >
+                                <th>Name</th>
+                                <th >Email</th>
+                                <th>Phone Number</th>
+                                <th>Role</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let representative of representative;">
+                                <td>{{ representative.name }}</td>
+                                <td  matTooltipPosition="above" matTooltipClass="custom-tooltip" matTooltip="{{representative.email}}">{{ representative.email | textTruncate:15}}</td>
+                                <td>{{ representative.phoneNumber }}</td>
+                                <td>{{ representative.role }}</td>
+                                <td> <mat-icon class="me-2 pointer position-relative" color="primary" style="z-index: 99999" (click)="onAddBoarding($event)" matTooltipPosition="above" matTooltipClass="custom-tooltip" matTooltip="click to edit">edit</mat-icon>
+
+
+                                    <mat-icon class="pointer position-relative" (click)="onDelete($event)" style="z-index: 99999" color="warn" matTooltipPosition="above" matTooltipClass="custom-tooltip"  matTooltip="click to delete">delete</mat-icon></td>
+                            </tr>
+                            </tbody>   
+                        </table>
+                        <div class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
+                            <div class="flex flex-1 justify-between sm:hidden">
+                                <a href="#" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
+                                <a href="#" class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Next</a>
+                            </div>
+                            <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+                                <div>
+                                    <p class="text-sm text-gray-700">
+                                        Showing
+                                        <span class="font-medium">1</span>
+                                        to
+                                        <span class="font-medium">1</span>
+                                        of
+                                        <span class="font-medium">1</span>
+                                        results
+                                    </p>
+                                </div>
+                                <div>
+                                    <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+                                        <a href="#" class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
+                                            <span class="sr-only">Previous</span>
+                                            <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
+                                            </svg>
+                                        </a>
+                                        <a href="#" aria-current="page" class="relative z-10 inline-flex items-center bg-primary px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">1</a>
+                                        <a href="#" class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">2</a>
+                                        <a href="#" class="relative hidden items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 md:inline-flex">3</a>
+                                        <span class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0">...</span>
+                                        <a href="#" class="relative hidden items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 md:inline-flex">8</a>
+                                        <a href="#" class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">9</a>
+                                        <a href="#" class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">10</a>
+                                        <a href="#" class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
+                                            <span class="sr-only">Next</span>
+                                            <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+                                            </svg>
+                                        </a>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>

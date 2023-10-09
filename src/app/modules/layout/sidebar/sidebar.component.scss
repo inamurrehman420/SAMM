@@ -1,0 +1,287 @@
+@import '../../../../assets/styles/variables';
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+
+    .sidebar-header {
+        padding: 25px 15px 15px 20px;
+
+        .logo {
+            width: 210px;
+            height: 50px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+    }
+
+    .sidebar-menu-container {
+        padding: 10px;
+        flex-grow: 1;
+        overflow: hidden;
+        overflow: overlay;
+        display: flex;
+        flex-direction: column;
+
+        &::-webkit-scrollbar-track {
+            background: #007B76;
+            border-radius: 10px;
+        }
+
+        // .sidebar-menu{
+        //     margin-top: auto;
+        //     padding: 10px;
+        //     .sidebar-menu-link{
+        //         background: transparent;
+        //         border: none;
+        //         padding: 10px 5px;
+        //         color: #fff;
+        //         display: flex;
+        //         align-items: center;
+        //         gap: 10px;
+        //         cursor: pointer;
+
+        //         span{
+        //             font-size: 14px;
+        //             font-family: $inter-r;
+        //             color: #fff;
+        //         }
+        //     }
+        // }
+    }
+}
+
+
+::ng-deep {
+    .panelMenu-list {
+        height: 100%;
+        .p-panelmenu {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            height: 100%;
+            .p-panelmenu-panel {
+                margin: 0;
+                &:last-of-type{
+                    margin-top: auto;
+                }
+                .p-panelmenu-header {
+                    .p-panelmenu-header-link {
+                        background: transparent;
+                        border: none;
+                        padding: 15px 10px;
+                        display: flex;
+                        align-items: center;
+                        gap: 5px;
+                        font-weight: 400;
+                        border-radius: 6px;
+                        &:focus {
+                            box-shadow: none;
+                        }
+                        &:hover{
+                            background: $primary;
+                        }
+
+                        .p-icon-wrapper {
+                            color: #fff;
+                            font-size: 12px;
+                            margin: 0;
+                            order: 1;
+                            margin-left: auto;
+
+                            svg {
+                                margin: 0;
+                            }
+                        }
+                        .p-menuitem-icon{
+                            color: #fff;
+                        }
+                        .p-menuitem-text {
+                            font-size: 14px;
+                            font-family: $inter-m;
+                            color: #fff;
+                            letter-spacing: 1px;
+                        }
+
+                    
+                        &.p-menuitem-link-active{
+                            background: $primary;
+                        }
+                    }
+
+                    // &:hover {
+                    //     .p-panelmenu-header-link {
+                    //         background: transparent;
+                    //     }
+                    // }
+                }
+
+                .p-toggleable-content {
+                    background: #233451;
+                    .p-panelmenu-content {
+                        background: transparent;
+                        border: none;
+                        padding: 0px;
+                        margin: 0;
+                        p-panelmenusub{
+                            .p-submenu-list {
+                                padding: 0;
+                                margin: 0;
+                                list-style: none;
+                                display: flex;
+                                flex-direction: column;
+                                gap: 5px;
+    
+                                .p-menuitem {
+                                    height: 40px;
+                                    padding: 0;
+                                    // border-radius: 6px;
+                                    font-size: 12px;
+                                    color: #fff;
+                                    font-family: $inter-r;
+                                    display: flex;
+                                    align-items: center;
+                                    cursor: pointer;
+                                    .p-menuitem-link{
+                                        padding: 10px 10px;
+                                        width: 100%;
+                                        .p-menuitem-icon{
+
+                                        }
+                                        .p-menuitem-text{
+                                            
+                                        }
+                                    }
+                                    // &.active {
+                                    //     background: $primary;
+                                    // }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &.p-accordion-tab-active {
+                    background: #233451;
+
+                    .p-accordion-header {
+                        .p-accordion-header-link {
+                            .p-accordion-toggle-icon {
+                                transform: rotate(180deg);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// ::ng-deep{
+//     .menu-accordion {
+//         .p-accordion{
+//             p-accordiontab{
+//                 .p-accordion-tab{
+//                     margin: 0;
+//                     padding: 10px;
+//                     border-radius: 10px;
+//                     .p-accordion-header{
+//                         .p-accordion-header-link{
+//                             background: transparent;
+//                             border: none;
+//                             padding: 10px 5px;
+//                             flex-direction: row-reverse;
+//                             &:focus{
+//                                 box-shadow: none;
+//                             }
+//                             .p-accordion-toggle-icon {
+//                                 color: #fff;
+//                                 font-size: 12px;
+//                                 margin: 0;
+//                                 transform: rotate(90deg);
+//                                 &.pi-chevron-down{
+
+//                                 }
+//                                 &.pi-chevron-right{
+
+//                                 }
+//                             }
+//                             .menu-head{
+//                                 flex-grow: 1;
+//                                 color: #fff;
+//                                 display: flex;
+//                                 align-items: center;
+//                                 gap: 10px;
+//                                 span{
+//                                     font-size: 14px;
+//                                     font-family: $inter-r;
+//                                     color: #fff;
+//                                     letter-spacing: 1px;
+//                                 }
+//                             }
+//                         }
+//                         &:hover{
+//                             .p-accordion-header-link{
+//                                 background: transparent;
+//                             }
+//                         }
+//                     }
+//                     .p-toggleable-content{
+//                         .p-accordion-content{
+//                             background: transparent;
+//                             border: none;
+//                             padding: 0px;
+//                             ul{
+//                                 padding: 0;
+//                                 margin: 0;
+//                                 list-style: none;
+//                                 display: flex;
+//                                 flex-direction: column;
+//                                 gap: 5px;
+//                                 li{
+//                                     height: 36px;
+//                                     border-radius: 6px;
+//                                     font-size: 12px;
+//                                     color: #fff;
+//                                     font-family: $inter-r;
+//                                     display: flex;
+//                                     align-items: center;
+//                                     padding: 5px 10px 5px 20px;
+//                                     cursor: pointer;
+//                                     &.active{
+//                                         background: $primary;
+//                                     }
+//                                 }
+//                             }
+//                         }
+//                     }
+//                     &.p-accordion-tab-active{
+//                         background: #233451;
+//                         .p-accordion-header{
+//                             .p-accordion-header-link{
+//                                 .p-accordion-toggle-icon{
+//                                     transform: rotate(180deg);
+//                                 }
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+//             p-accordiontab.no-submenu{
+//                 .p-accordion-tab{
+//                     .p-accordion-header{
+//                         .p-accordion-header-link{
+//                             > .p-icon-wrapper{
+//                                 display: none;
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }

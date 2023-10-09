@@ -1,0 +1,129 @@
+@import '../variables';
+
+.btn{
+    height: $h-md;
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: $inter-m;
+    padding: 5px 15px;
+    white-space: nowrap;
+    min-width: 140px;
+    i{
+        font-size: 14px;
+        margin-right: 8px;
+    }
+    @media (max-width:600px) {
+        min-width: 120px;
+    }
+}
+
+.btn-icon{
+    min-width: auto;
+    width: $h-md;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    i{
+        margin: 0;
+    }
+}
+
+.link-btn{
+    min-width: auto;
+    padding: 5px;
+    background: transparent;
+    border: none;
+    &:hover{
+        color: inherit;
+    }
+    i{
+        margin: 0;
+    }
+}
+
+.btn-sm{
+    height: $h-sm;
+    &.btn-icon{
+        width: $h-sm;
+    }
+}
+/**************************************/
+.btn-primary{
+    background: $primary;
+    border-color: $primary;
+    color: #fff;
+    &:hover , &:active{
+        background: $primary !important;
+        background-color: $primary !important;
+        border-color: $primary !important;
+        color: #fff;
+    }
+    &[disabled], &.disabled{
+        background: #414042;
+        border-color: #414042;
+        opacity: 1;
+    }
+}
+
+.btn-secondary{
+    background: $secondary;
+    border-color: $secondary;
+    color: #fff;
+    &:hover{
+        background: $secondary;
+        border-color: $secondary;
+        color: #fff;
+    }
+}
+
+.btn-dark-blue{
+    background: $dark-blue;
+    border-color: $dark-blue;
+    color: #fff;
+    &:hover{
+        background: $dark-blue;
+        border-color: $dark-blue;
+        color: #fff;
+    }
+    &[disabled], &.disabled{
+        background: #414042;
+        border-color: #414042;
+        opacity: 1;
+    }
+}
+
+.btn-danger{
+    background: $danger;
+    border-color: $danger;
+    color: #fff;
+    &:hover{
+        background: $danger;
+        border-color: $danger;
+        color: #fff;
+    }
+    &[disabled], &.disabled{
+        background: #414042;
+        border-color: #414042;
+        opacity: 1;
+    }
+}
+
+.btn-outline-white{
+    background: #fff;
+    border-color: #D7DFE9;
+    color: #5E718D;
+    &:hover{
+        background: #fff;
+        border-color: #D7DFE9;
+        color: #5E718D;
+    }
+}
+
+/**************************************/
+
+.btns-group{
+    > .btn:not(:first-of-type){
+        margin-left: 10px;
+    }
+}

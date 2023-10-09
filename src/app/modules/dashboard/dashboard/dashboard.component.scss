@@ -1,0 +1,23 @@
+::ng-deep{
+    .fileUpload-btn {
+        .p-fileupload{
+            .p-fileupload-choose{
+                padding: 0;
+                height: auto;
+                background: transparent;
+                border: none;
+                color: #fff;
+                &:hover{
+                    background: transparent;
+                border: none;
+                color: #fff;
+                }
+            }
+        }
+       
+    }
+}
+
+.icon-btn{
+    margin-right: 18px !important;
+}

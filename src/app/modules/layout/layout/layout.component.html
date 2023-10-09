@@ -1,0 +1,10 @@
+
+<div class="layout" #layout>
+    <app-sidebar></app-sidebar>
+    <div class="app-container">
+        <app-header (toogleSidebaremit)="toggleSidebar(layout)"></app-header>
+        <div class="app-component">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

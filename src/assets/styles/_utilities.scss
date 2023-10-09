@@ -1,0 +1,94 @@
+@import 'variables';
+
+.title{
+    margin: 0;
+    font-size: 18px;
+    font-family: $inter-sb;
+    color: $text-dark;
+    &.sm{
+        font-size: 16px;
+    }
+    &.md{
+        font-size: 20px;
+    }
+    &.lg{
+        font-size: 24px;
+    }
+    
+}
+.text{
+    margin: 0;
+    font-size: 14px;
+    font-family: $inter-r;
+    color: $text;
+    
+}
+/*****************************************/
+.clr-primary{
+    color: $primary;
+}
+.clr-dark-blue{
+    color: $dark-blue;
+}
+
+.clr-text{
+    color: $text;
+}
+.clr-text-light{
+    color: $text-light
+}
+.clr-text-dark{
+    color: $text-dark
+}
+.clr-text-muted{
+    color: $text-muted
+}
+
+.clr-text-success{
+    color: $text-success
+}
+/*****************************************/
+.bg-primary{
+    background: $primary;
+}
+/*****************************************/
+@mixin font-size($size) {
+    .fs-#{$size} {
+        font-size: unquote($size + px) !important;
+    }
+}
+@include font-size(8);
+@include font-size(10);
+@include font-size(12);
+@include font-size(14);
+@include font-size(16);
+@include font-size(18);
+@include font-size(20);
+@include font-size(22);
+@include font-size(24);
+@include font-size(26);
+@include font-size(28);
+@include font-size(32);
+/*****************************************/
+.inter-r {
+    font-family: $inter-r ;
+  }
+  
+  .inter-m {
+    font-family: $inter-m ;
+  }
+  
+  .inter-sb {
+    font-family: $inter-sb ;
+  }
+  .inter-b {
+    font-family: $inter-b ;
+  }
+
+  /*****************************************/
+.cursor-pointer{
+    cursor: pointer;
+}
+.border-right-2{
+    border-right: 2px solid #EEF2F8;
+}

@@ -1,0 +1,59 @@
+.avatar-span {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 20px;
+  object-fit: fill;
+  background-image: url(https://st4.depositphotos.com/14903220/22197/v/450/depositphotos_221970610-stock-illustration-abstract-sign-avatar-icon-profile.jpg);
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.example-additional-selection {
+  opacity: 0.75;
+  font-size: 0.75em;
+}
+
+tr.hide-table-padding td {
+  padding: 0;
+}
+
+.expand-button {
+  position: relative;
+}
+
+.accordion-toggle .expand-button:after {
+  position: absolute;
+  left: .75rem;
+  top: 50%;
+  transform: translate(0, -50%);
+  content: '-';
+}
+
+.accordion-toggle.collapsed .expand-button:after {
+  content: '+';
+}
+
+//tr{
+//    height: 56px;
+//}
+th,
+td {
+  line-height: 39px;
+  padding-left: 10px !important;
+  ;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.example-additional-selection {
+  opacity: 0.75;
+  font-size: 0.75em;
+}

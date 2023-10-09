@@ -1,0 +1,234 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~/node_modules/primeicons/primeicons.css";
+@import '~/node_modules/primeng/resources/primeng.min.css';
+@import "~/node_modules/primeng/resources/themes/lara-light-blue/theme.css";
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.collapse{
+ visibility: unset;
+}
+.mat-table {
+  border-radius: 8px; /* Adjust the radius as needed */
+  overflow: hidden; /* Ensure content within the table doesn't overflow */
+}
+.mdc-tab-indicator--active{
+  background: #4fa5a0;
+  color: white !important;
+  border-radius: 6px;
+  border-bottom: none !important;
+  .mdc-tab__text-label{
+    color: white !important;
+  }
+}
+.mat-horizontal-stepper-header-container{
+  width: 470px;
+}
+.cdk-overlay-connected-position-bounding-box{
+  top: 58.9444px !important;
+}
+
+.mat-mdc-tab:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline, .mat-mdc-tab-link:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline {
+  border-color: white;
+}
+/* Optionally, you can style the table's header and footer */
+.mat-header-row,
+.mat-footer-row {
+  background-color: #f5f5f5; /* Example background color */
+  font-weight: bold; /* Example font-weight */
+  color: #333; /* Example text color */
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.text-primary {
+  --bs-text-opacity: 1;
+  color: #007B76 !important;
+}
+.mat-mdc-raised-button.mat-primary {
+  --mdc-protected-button-container-color: #2F4858;
+  --mdc-protected-button-label-text-color: #fff;
+}
+.ngx-otp-input-container{
+  place-content: center;
+}
+.mdc-text-field--filled:not(.mdc-text-field--disabled){
+  background: transparent;
+
+  border-radius: 6px;
+  //border: 1px solid #e6e6e6;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::before{
+  border-bottom-color: transparent;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::before {
+  border-bottom-color: transparent;
+}
+
+.mdc-text-field--filled .mdc-line-ripple::after {
+  border-bottom-color: transparent;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled):hover .mdc-line-ripple::before {
+  border-bottom-color:transparent !important;
+}
+
+.mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
+  color: #007B76 !important;
+}
+
+.mat-mdc-form-field-focus-overlay {
+  background-color: transparent !important;
+}
+
+app-layout .layout .sidebar {
+  background: #007B76;
+  position: fixed;
+  left: 0;
+  height: 100%;
+  transition: all 0.3s;
+  z-index: 99;
+}
+#chart{
+  width: 100%;
+}
+#chart {
+  max-width: 100%;
+  margin: 35px auto;
+}
+.mat-mdc-form-field-subscript-wrapper{
+  display: none;
+}
+.apexcharts-canvas{
+  width: 100% !important;
+}
+app-layout .layout {
+  background: #f9f9f9;
+  height: 100%;
+  transition: all 0.3s;
+}
+foreignObject{
+  width: 100%;
+}
+#chart {
+  margin: 28px auto !important;
+}
+#apexchartsl1hjsq6e{
+  width: 100%;
+}
+#SvgjsSvg1006{
+  width: 100%;
+}
+.mat-mdc-raised-button:not(:disabled) {
+  color: white !important;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.cdk-overlay-container .mat-mdc-dialog-container .mdc-dialog__surface {
+  overflow-x: hidden;
+}
+.mat-mdc-button>.mat-icon {
+  //margin-right: 0px !important;
+}
+
+.mat-icon.mat-primary {
+  color: #2F4858;
+}
+
+textarea {
+  resize: none !important;
+}
+
+.mat-chip{
+  background: #00B69B;
+}
+
+.mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) {
+  background-color: #007B76 !important;
+}
+
+.mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) .mdc-evolution-chip__text-label {
+  color: white !important;
+
+}
+
+.mat-toolbar.mat-primary {
+  background: #2F4858;
+  color: #fff;
+}
+
+.mat-mdc-fab.mat-primary, .mat-mdc-mini-fab.mat-primary {
+  --mdc-fab-container-color: #2F4858;
+  --mdc-fab-icon-color: #fff;
+  --mat-mdc-fab-color: #fff;
+}
+.custom-tooltip .mdc-tooltip__surface{
+  background: black !important;
+  border-radius: 12px !important;
+  color: white !important;
+  flex-direction: row !important;
+  justify-content: start !important;
+  align-items: center !important;
+  margin-bottom: 60px !important;
+  margin-right: 45px !important;
+
+
+}
+
+.mat-mdc-button:not(:disabled) {
+  color: #2F4858;
+}
+.mat-h3, .mat-subtitle-1, .mat-typography .mat-h3, .mat-typography .mat-subtitle-1, .mat-typography h3 {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 28px;
+  font-family: Roboto, sans-serif;
+  letter-spacing: .009375em;
+  margin: 0 0 16px;
+}
+
+mat-header-row{
+  background: #4fa5a0 !important;
+  color: white !important;
+}
+mat-header-row{
+
+  mat-header-cell{
+    background: #4fa5a0 !important;
+    color: white !important;
+  }
+
+}
+.example-detail-row{
+  .mat-column-expandedDetail{
+    width: 100%;
+    display: block;
+  }
+}
+thead th{
+  background: #4fa5a0 !important;
+  color: white !important;
+}
+.bg-primary {
+  --bs-bg-opacity: 1;
+  background-color: #4fa5a0 !important;
+}
+
+.bg-secondary{
+  background: #007B76 !important;
+}
+

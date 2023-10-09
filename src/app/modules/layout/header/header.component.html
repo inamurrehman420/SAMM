@@ -1,0 +1,41 @@
+<div class="header d-flex place-content-between">
+  <button class="btn btn-dark-blue btn-icon toggle-sidebar" (click)="toggleSidebar()">
+    <i class="pi pi-bars fs-18"></i>
+  </button>
+
+<div class="dropdown border d-flex shadow-sm rounded">
+  <div
+      class="relative flex rounded shadow self-start pt-2 pb-1 pl-3 pr-2 cursor-pointer overflow-hidden bg-primary"
+      matRipple
+      [matMenuTriggerFor]="projectsMenu">
+      <div class="flex items-center">
+          <div class="overflow-hidden d-flex">
+              <div class="font-medium"><b class="text-white">
+                  <span class="me-2" _ngcontent-phm-c276=""><a _ngcontent-phm-c276="" class="btn avatar-button rounded-circle overflow-hidden p-0 m-0 d-inline-flex" style=""><span _ngcontent-phm-c276="" data-v-0a07f886="" class="avatar-span border-0 d-inline-flex align-items-center justify-content-center text-white text-uppercase text-nowrap font-weight-normal"></span></a></span>
+
+                  Usama</b></div>
+              <div class="pl-1 items-center justify-center" style="margin-top: 1px;">
+                  <mat-icon class="text-white">expand_more</mat-icon>
+              </div>
+          </div>
+
+      </div>
+
+      <mat-menu
+          #projectsMenu="matMenu"
+          [xPosition]="'before'">
+
+          <button
+              class="justify-start w-full"
+              mat-flat-button
+              (click)="settings()">&nbsp;
+              <mat-icon>settings</mat-icon>
+              Settings
+          </button>
+      </mat-menu>
+  </div>
+</div>
+  
+
+
+

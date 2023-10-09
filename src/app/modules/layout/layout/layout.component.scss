@@ -1,0 +1,91 @@
+@import '../../../../assets/styles/variables';
+::ng-deep{
+    .layout{
+        background: #E3E5F5;
+        height: 100%;
+        transition: all 0.3s;
+        .sidebar{
+            
+            background:#6d2de3;
+            position: fixed;
+            left: 0;
+            height: 100%;
+            transition: all 0.3s;
+            z-index: 99;
+        }
+        .app-container{
+            
+            height: 100%;
+            overflow: hidden;
+            transition: all 0.3s;
+            .header{
+                height: $header-height;
+                border-bottom: 1px solid #E3E5F5;
+            }
+            .app-component{
+                padding: 24px;
+                overflow: hidden;
+                overflow-y: overlay;
+                height: calc(100% - #{$header-height});
+                @media (max-width:'600px') {
+                    padding: 15px;
+                }
+            }
+        }
+        // &.sidebar-close{
+        //     .sidebar{
+        //         left: -$expanded;
+        //     }
+        //     .app-container{
+        //         margin-left: 0;
+        //     }
+        // }
+    }
+    .layout{
+        &.desktop{
+          .sidebar{
+            width: $expanded;
+          }
+          .app-container{
+            margin-left: $expanded;
+          }
+         &.sidebar-close{
+            .sidebar{
+                left: -$expanded;
+            }
+            .app-container{
+                margin-left: 0;
+            }
+        }
+        }
+        &.tablet{
+            .sidebar{
+                left: -$expanded;
+            }
+            .app-container{
+                margin-left: 0;
+            }
+            &.sidebar-open{
+                .sidebar{
+                    left: 0;
+                }
+            }
+        }
+        &.mobile{
+          .sidebar{
+            left: -$expanded;
+            width: $expanded;
+          }
+          .app-container{
+            margin-left: 0;
+          }
+          &.sidebar-mobile-open{
+            .sidebar{
+              left: 0;
+             
+            }
+           
+          }
+        }
+      }
+}
