@@ -32,17 +32,17 @@ export class SidebarComponent {
         routerLink: "/dashboard",
       },
       {
-        label: "Appointments",
+        label: "Recipe management",
         icon: "bi bi-people",
         routerLink: "/appointments",
       },
       {
-        label: "Team Management",
+        label: "User Management",
         icon: "bi bi-sliders2-vertical",
         routerLink: "/teamManagment",
       },
       {
-        label: "Logs",
+        label: "Activity Logs",
         icon: "bi bi-gear-wide",
         routerLink: "/userLogs",
       },
