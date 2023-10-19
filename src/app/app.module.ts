@@ -23,6 +23,7 @@ import { NgxMatTimepickerModule } from "ngx-mat-timepicker";
 import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
 import { MatMenuModule } from "@angular/material/menu";
 import { SharedModule } from "./shared/shared.module";
+import { NgxSpinnerModule } from "ngx-spinner";
 const lang = "en-US";
 @NgModule({
   declarations: [AppComponent],
@@ -43,6 +44,8 @@ const lang = "en-US";
     RouterModule,
     SharedModule,
     NgxOtpInputModule,
+    NgxSpinnerModule,
+    NgxSpinnerModule,
     HttpClientModule,
     NgxMatTimepickerModule.setLocale(lang),
     NgxMaterialTimepickerModule,

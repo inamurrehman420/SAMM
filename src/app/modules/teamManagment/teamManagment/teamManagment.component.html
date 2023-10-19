@@ -6,7 +6,7 @@
       </div>
   </div>
       <div class="row mb-3 mt-3">
-  <div class="col-lg-6">
+  <!-- <div class="col-lg-6">
     <mat-form-field class="mr-3">
       <mat-label>Select</mat-label>
       <mat-select [formControl]="searchSelect">
@@ -20,8 +20,8 @@
         <mat-icon>search</mat-icon>
       </button>
     </mat-form-field>
-  </div>
-  <div class="col-lg-6 text-end place-self-end">
+  </div> -->
+  <div class="col-lg-12 text-end place-self-end">
       <button color="primary"  (click)="onAddUser()" mat-raised-button>
           <mat-icon>add</mat-icon>
           Add User
@@ -33,8 +33,8 @@
         <div class="mat-elevation-z8">
           <table mat-table [dataSource]="dataSource" matSort class="mat-table">
    
-        <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Profile/Name </th>
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
             <td mat-cell *matCellDef="let row">
                 <span>
                     <a class="btn avatar-button rounded-circle overflow-hidden p-0 m-0 d-inline-flex">
@@ -44,11 +44,13 @@
                 </a>
                     <!---->
                 </span>
-
-                <span class="font-bold text-primary ms-2">{{row.name}}</span>
-
-
+                <span class="font-bold text-primary ms-2">{{row.user_id}}</span>
             </td>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+            <td mat-cell *matCellDef="let row"> {{row.full_name}} </td>
           </ng-container>
 
           <ng-container matColumnDef="email">
@@ -57,32 +59,21 @@
           </ng-container>
     
           
-            <ng-container matColumnDef="phoneNumber">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone Number </th>
-              <td mat-cell *matCellDef="let row">{{row.phoneNumber}}</td>
-            </ng-container>
-        
-        
-            <ng-container matColumnDef="start_date">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Start Date </th>
-              <td mat-cell *matCellDef="let row"> {{row.start_date}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="end_date">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> End Date </th>
-                <td mat-cell *matCellDef="let row"> {{row.end_date}} </td>
-              </ng-container>
-        
-            
   
-            <ng-container matColumnDef="role">
+            <ng-container matColumnDef="role_name">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Role </th>
               <td mat-cell *matCellDef="let row">
                 
-                  {{ row.role }}
+                  {{ row.role_name }}
                   
             </td>
             </ng-container>
+
+            <ng-container matColumnDef="created_by">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Created By </th>
+              <td mat-cell *matCellDef="let row"> {{row.created_by}} </td>
+            </ng-container>
+      
   
   
             <ng-container matColumnDef="action">
@@ -101,9 +92,9 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         
             <!-- Row shown when there is no matching data. -->
-            <tr class="mat-row" *matNoDataRow>
+            <!-- <tr class="mat-row" *matNoDataRow>
               <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-            </tr>
+            </tr> -->
           </table>
   
         </div>

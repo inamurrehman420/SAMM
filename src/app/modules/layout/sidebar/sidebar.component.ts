@@ -41,21 +41,21 @@ export class SidebarComponent {
         icon: "bi bi-sliders2-vertical",
         routerLink: "/teamManagment",
       },
-      {
-        label: "Activity Logs",
-        icon: "bi bi-gear-wide",
-        routerLink: "/userLogs",
-      },
-      {
-        label: "Client Onboarding",
-        icon: "bi bi-sliders2-vertical",
-        routerLink: "/clientOnboarding",
-      },
-      {
-        label: "Company Onboarding",
-        icon: "bi bi-person-gear",
-        routerLink: "/companyOnboarding",
-      },
+      // {
+      //   label: "Activity Logs",
+      //   icon: "bi bi-gear-wide",
+      //   routerLink: "/userLogs",
+      // },
+      // {
+      //   label: "Client Onboarding",
+      //   icon: "bi bi-sliders2-vertical",
+      //   routerLink: "/clientOnboarding",
+      // },
+      // {
+      //   label: "Company Onboarding",
+      //   icon: "bi bi-person-gear",
+      //   routerLink: "/companyOnboarding",
+      // },
 
       {
         label: "Logout",

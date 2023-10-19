@@ -11,7 +11,15 @@ export class AuthService {
   constructor(private _dataService: DataService) { }
 
 
-  login(formData: FormGroup) {
-    return this._dataService.genericServiceCaller(REQUESTTYPE.POST, 'auth/login', formData)
+  login(formData: any) {
+    return this._dataService.genericServiceCaller(REQUESTTYPE.POST, 'auth/authenticate', formData)
+  }
+
+  Register(formData: any) {
+    return this._dataService.genericServiceCaller(REQUESTTYPE.POST, 'auth/register-user', formData)
+  }
+
+  ChangePassword(formData: any) {
+    return this._dataService.genericServiceCaller(REQUESTTYPE.POST, 'auth/authenticate', formData)
   }
 }

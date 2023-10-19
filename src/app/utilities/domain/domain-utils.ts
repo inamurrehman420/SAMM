@@ -22,7 +22,9 @@ get ApiUrl() {
         let originalPath = window.location.origin;
         let domain: string = environment.apiUrl;
         if (originalPath.includes("localhost")) {
-            domain = "http://localhost:3000/";
+            // domain = "http://localhost:3000/";
+            domain = "http://localhost:7001/api/";
+
         }
         return domain;
     }

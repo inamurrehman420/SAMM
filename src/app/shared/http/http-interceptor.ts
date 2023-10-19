@@ -17,19 +17,18 @@ export class HttpResponseInterceptor implements HttpInterceptor {
   constructor(){}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
- 
-    let access_token =  localStorage.getItem("access_token");
+    debugger
+    let userinfo = JSON.parse(localStorage.getItem("UserInfo"))
+    let access_token =  userinfo.accessToken;
     if(!access_token){
       access_token = '';
     }
   
-
-    const customReq = request.clone({      
-      headers: request.headers
-                  .set("authorization","bearer "+access_token)
-        });    
-    
+     const customReq = request.clone({
+          setHeaders: {
+            authorization: `bearer ${access_token}`
+          }
+      });
 
 
     return next.handle(customReq).pipe(

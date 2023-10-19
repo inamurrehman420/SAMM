@@ -12,8 +12,10 @@ export class HeaderComponent {
   toggleSidebar() {
     this.toogleSidebaremit.emit();
   }
-
-  constructor(private dialog: MatDialog, private dialogRef: MatDialog) {}
+    UserInfo:any;
+    constructor(private dialog: MatDialog, private dialogRef: MatDialog) {
+    this.UserInfo = JSON.parse(localStorage.getItem("UserInfo"))
+  }
 
   settings() {
     const dialogRef = this.dialog.open(SettingsComponent, {

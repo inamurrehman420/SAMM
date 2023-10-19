@@ -20,8 +20,10 @@ export class DataService {
 
   public genericServiceCaller<T>(callType: REQUESTTYPE, controlerActionName: string, data: any = '') {
     let apiUrl = this.myDomain + controlerActionName;
+    
     if (callType && controlerActionName) {
       if (callType == REQUESTTYPE.POST) {
+
         return this.httpClient
           .post<T>(apiUrl, data)
           .pipe(catchError((err, source) => this.responseHandler.onCatch(err, source)));

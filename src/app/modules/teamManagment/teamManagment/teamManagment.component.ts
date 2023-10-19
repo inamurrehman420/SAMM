@@ -1,4 +1,4 @@
-import { Component, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
@@ -6,132 +6,34 @@ import { MatTableDataSource } from "@angular/material/table";
 import { DeleteComponent } from "src/app/shared/delete/delete.component";
 import { AddUserComponent } from "../add-user/add-user.component";
 import { FormControl } from "@angular/forms";
+import { TeamManagmentService } from "../teamManagment.service";
+import { finalize } from "rxjs";
+import { ToastrService } from "ngx-toastr";
+import { NgxSpinnerService } from "ngx-spinner";
 
-export interface AppointmentData {
-  imageUrl: string;
-  name: string;
+export interface UserData {
+  
+  user_id: number;
+  full_name: string;
   email: string;
-  phoneNumber: string;
-  start_date: string;
-  end_date: string;
-  role: string;
+  created_by:  string;
+  role_id: number;
+  role_name:string;
 }
-
-const ELEMENT_DATA: AppointmentData[] = [
-  {
-    imageUrl: "https://github.com/SiddAjmera.png",
-    start_date: "18-09-2023",
-    end_date: "20-09-2023",
-    name: "Inam",
-    email: "Usama",
-    phoneNumber: "03001236575",
-    role: "manager",
-  },
-
-  {
-    imageUrl: "https://github.com/SiddAjmera.png",
-    start_date: "18-09-2023",
-    end_date: "20-09-2023",
-    name: "Inam",
-    email: "Usama",
-    phoneNumber: "03001236575",
-    role: "manager",
-  },
-  {
-    imageUrl: "https://github.com/SiddAjmera.png",
-    start_date: "18-09-2023",
-    end_date: "20-09-2023",
-    name: "Inam",
-    email: "Usama",
-    phoneNumber: "03001236575",
-    role: "manager",
-  },
-  {
-    imageUrl: "https://github.com/SiddAjmera.png",
-    start_date: "18-09-2023",
-    end_date: "20-09-2023",
-    name: "Inam",
-    email: "Usama",
-    phoneNumber: "03001236575",
-    role: "manager",
-  },
-  {
-    imageUrl: "https://github.com/SiddAjmera.png",
-    start_date: "18-09-2023",
-    end_date: "20-09-2023",
-    name: "Inam",
-    email: "Usama",
-    phoneNumber: "03001236575",
-    role: "manager",
-  },
-  {
-    imageUrl: "https://github.com/SiddAjmera.png",
-    start_date: "18-09-2023",
-    end_date: "20-09-2023",
-    name: "Inam",
-    email: "Usama",
-    phoneNumber: "03001236575",
-    role: "manager",
-  },
-  {
-    imageUrl: "https://github.com/SiddAjmera.png",
-    start_date: "18-09-2023",
-    end_date: "20-09-2023",
-    name: "Inam",
-    email: "Usama",
-    phoneNumber: "03001236575",
-    role: "manager",
-  },
-  {
-    imageUrl: "https://github.com/SiddAjmera.png",
-    start_date: "18-09-2023",
-    end_date: "20-09-2023",
-    name: "Inam",
-    email: "Usama",
-    phoneNumber: "03001236575",
-    role: "manager",
-  },
-  {
-    imageUrl: "https://github.com/SiddAjmera.png",
-    start_date: "18-09-2023",
-    end_date: "20-09-2023",
-    name: "Inam",
-    email: "Usama",
-    phoneNumber: "03001236575",
-    role: "manager",
-  },
-  {
-    imageUrl: "https://github.com/SiddAjmera.png",
-    start_date: "18-09-2023",
-    end_date: "20-09-2023",
-    name: "Inam",
-    email: "Usama",
-    phoneNumber: "03001236575",
-    role: "manager",
-  },
-  {
-    imageUrl: "https://github.com/SiddAjmera.png",
-    start_date: "18-09-2023",
-    end_date: "20-09-2023",
-    name: "Inam",
-    email: "Usama",
-    phoneNumber: "03001236575",
-    role: "manager",
-  },
-];
 
 @Component({
   selector: "app-teamManagment",
   templateUrl: "./teamManagment.component.html",
   styleUrls: ["./teamManagment.component.scss"],
 })
-export class TeamManagmentComponent {
+export class TeamManagmentComponent implements OnInit{
   dataFromDialog: any;
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.GetUser();
+  }
 
   searchSelect = new FormControl("");
-
   searchList: string[] = ["Name", "Email", "Phone Number", "Role"];
 
   onAddUser(): void {
@@ -149,27 +51,30 @@ export class TeamManagmentComponent {
   }
 
   displayedColumns: string[] = [
+    "id",
     "name",
     "email",
-    "phoneNumber",
-    "start_date",
-    "end_date",
-    "role",
+    "role_name",
+    "created_by",
     "action",
   ];
-  dataSource: MatTableDataSource<AppointmentData>;
+  dataSource: MatTableDataSource<UserData>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private dialog: MatDialog, private dialogRef: MatDialog) {
-    this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+  constructor(private dialog: MatDialog,
+              private dialogRef: MatDialog,
+              private teamManagmentService:TeamManagmentService,
+              private toastr: ToastrService,
+              private spinner: NgxSpinnerService,) {
+   
   }
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
+  // ngAfterViewInit() {
+  //   this.dataSource.paginator = this.paginator;
+  //   this.dataSource.sort = this.sort;
+  // }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -188,6 +93,28 @@ export class TeamManagmentComponent {
 
     dialogRef.afterClosed().subscribe((data) => {
       console.log(data);
+    });
+  }
+
+  GetUser(){
+    this.spinner.show();
+    this.teamManagmentService.GetUser({})
+    .pipe(
+        finalize(() => {
+          this.spinner.hide();
+        })
+    )
+    .subscribe((res) => {
+        console.log(res);
+        if (res.success === true) {
+          this.dataSource =new MatTableDataSource(res.data);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+          // this.toastr.success('Login Successfully','Success');
+        } else { 
+          this.toastr.error('Something went wrong','Failed');
+           
+        }
     });
   }
 }

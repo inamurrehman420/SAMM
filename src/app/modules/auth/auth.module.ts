@@ -17,6 +17,7 @@ import {ToastrModule} from "ngx-toastr";
 import { SharedModule } from 'primeng/api';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     RouterModule,
     NgxOtpInputModule,
     SharedModule,
+    NgxSpinnerModule,
     ToastrModule.forRoot({
       closeButton: true,
       timeOut: 3000, // 15 seconds

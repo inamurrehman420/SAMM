@@ -25,6 +25,7 @@ import { NgxMatTimepickerModule } from "ngx-mat-timepicker";
 import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
 import { SharedModule } from "primeng/api";
 import { AddUserComponent } from './add-user/add-user.component';
+import { NgxSpinnerModule } from "ngx-spinner";
 const lang = "en-US";
 @NgModule({
   declarations: [TeamManagmentComponent, AddUserComponent],
@@ -54,6 +55,7 @@ const lang = "en-US";
     SharedModule,
     NgxMatTimepickerModule.setLocale(lang),
     NgxMaterialTimepickerModule,
+    NgxSpinnerModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: lang }],
 })
