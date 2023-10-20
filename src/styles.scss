@@ -47,7 +47,7 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .text-primary {
   --bs-text-opacity: 1;
-  color: #e48d26 !important;
+  color: #373737 !important;
 }
 .mat-mdc-raised-button.mat-primary {
   --mdc-protected-button-container-color: #e48d26;
@@ -158,7 +158,7 @@ textarea {
 }
 
 .mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) {
-  background-color: #007B76 !important;
+  background-color: #373737 !important;
 }
 
 .mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) .mdc-evolution-chip__text-label {
