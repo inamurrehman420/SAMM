@@ -21,7 +21,6 @@ export class SidebarComponent {
     private messageService: MessageService,
     public jwtHelper: JwtHelperService
   ) {}
-
   tokenInfo: any;
   token: any;
   ngOnInit() {
@@ -33,7 +32,7 @@ export class SidebarComponent {
       },
       {
         label: "Recipe management",
-        icon: "bi bi-people",
+        icon: "bi bi-minecart-loaded",
         routerLink: "/appointments",
       },
       {

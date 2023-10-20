@@ -47,10 +47,10 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .text-primary {
   --bs-text-opacity: 1;
-  color: #007B76 !important;
+  color: #e48d26 !important;
 }
 .mat-mdc-raised-button.mat-primary {
-  --mdc-protected-button-container-color: #2F4858;
+  --mdc-protected-button-container-color: #e48d26;
   --mdc-protected-button-label-text-color: #fff;
 }
 .ngx-otp-input-container{
@@ -90,7 +90,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 app-layout .layout .sidebar {
-  background: #007B76;
+  background: #373737;
   position: fixed;
   left: 0;
   height: 100%;
@@ -220,12 +220,12 @@ mat-header-row{
   }
 }
 thead th{
-  background: #4fa5a0 !important;
+  background: #373737 !important;
   color: white !important;
 }
 .bg-primary {
   --bs-bg-opacity: 1;
-  background-color: #4fa5a0 !important;
+  background-color: #373737 !important;
 }
 
 .bg-secondary{
