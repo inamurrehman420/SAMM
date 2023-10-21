@@ -18,6 +18,8 @@ export class TeamManagmentService {
   }
 
   AddUpdateUser(formData: any) {
+    delete formData.profile_picture;
+    delete formData.phone_number;
     return this._dataService.genericServiceCaller(REQUESTTYPE.POST, 'user/add-update-user', formData)
   }
 
@@ -25,4 +27,11 @@ export class TeamManagmentService {
     return this._dataService.genericServiceCaller(REQUESTTYPE.GET, `user/delete-user/${id}`)
   }
 
+  GetRole(formData: any) {
+    let obj = {
+      "page":1,
+      "limit":10
+  }
+    return this._dataService.genericServiceCaller(REQUESTTYPE.POST, 'role/get-all-roles', obj)
+  }
 }

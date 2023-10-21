@@ -35,7 +35,7 @@
                             <input
                                     matInput
                                     placeholder="Enter Name"
-                                    [formControlName]="'name'"
+                                    [formControlName]="'userName'"
                                     required>
                             <mat-error>Name is Required</mat-error>
                         </mat-form-field>
@@ -73,15 +73,9 @@
                         <div class="col-lg-6">
                             <mat-form-field  class="w-100">
                                 <mat-label>Select Role</mat-label>
-                                <mat-select  [formControlName]="'role'">
-                                    <mat-option>
-                                        Client
-                                    </mat-option>
-                                    <mat-option>
-                                        User
-                                    </mat-option>
-                                    <mat-option>
-                                        Lead
+                                <mat-select  [formControlName]="'roleId'">
+                                    <mat-option *ngFor="let role of Roles" [value]="role.role_id">
+                                        {{role.role_name}}
                                     </mat-option>
                                 </mat-select>
                             </mat-form-field>
@@ -90,8 +84,7 @@
                 </div>
 
 
-                <div class="row mb-3  px-3">
-
+                <!-- <div class="row mb-3  px-3">
                     <div class="col-lg-6">
                         <mat-form-field color="accent" class="w-100">
                             <mat-label>Select Start Date</mat-label>
@@ -108,12 +101,7 @@
                             <mat-datepicker #picker2 color="primary"></mat-datepicker>
                         </mat-form-field>
                     </div>
-
-
-
-
-
-                </div>
+                </div> -->
 
                 <div class="row mb-3  px-3">
 

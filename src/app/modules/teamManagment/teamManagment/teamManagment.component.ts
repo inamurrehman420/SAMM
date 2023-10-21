@@ -27,7 +27,6 @@ export interface UserData {
   styleUrls: ["./teamManagment.component.scss"],
 })
 export class TeamManagmentComponent implements OnInit{
-  dataFromDialog: any;
 
   ngOnInit() {
     this.GetUser();
@@ -42,10 +41,9 @@ export class TeamManagmentComponent implements OnInit{
       height: "auto",
     });
 
-    dialogRef.afterClosed().subscribe((data) => {
-      this.dataFromDialog = data.form;
-      if (data.clicked === "submit") {
-        console.log("Sumbit button clicked");
+    dialogRef.afterClosed().subscribe((data) => { 
+      if (data === true) {
+        this.GetUser();
       }
     });
   }
