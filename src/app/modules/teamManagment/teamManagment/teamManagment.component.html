@@ -36,14 +36,23 @@
         <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
             <td mat-cell *matCellDef="let row">
-                <span>
+                <span *ngIf="row?.profile_pic_path">
                     <a class="btn avatar-button rounded-circle overflow-hidden p-0 m-0 d-inline-flex">
-                    <span data-v-0a07f886="" class="avatar-span border-0 d-inline-flex align-items-center justify-content-center text-white text-uppercase text-nowrap font-weight-normal">
+                    <!-- <span data-v-0a07f886="" > -->
 
-                    </span>
+                    <img  class="avatar-span border-0 d-inline-flex align-items-center justify-content-center text-white text-uppercase text-nowrap font-weight-normal" [src]="getImg(row.profile_pic_path)"/>
+                  
+                    <!-- </span> -->
                 </a>
                     <!---->
                 </span>
+                <span *ngIf="!row?.profile_pic_path">
+                  <a class="btn avatar-button rounded-circle overflow-hidden p-0 m-0 d-inline-flex">
+                    <img  class="avatar-span border-0 d-inline-flex align-items-center justify-content-center text-white text-uppercase text-nowrap font-weight-normal"/>
+              </a>
+                  <!---->
+              </span>
+
                 <span class="font-bold text-primary ms-2">{{row.user_id}}</span>
             </td>
           </ng-container>
@@ -80,7 +89,7 @@
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
               <td mat-cell *matCellDef="let row">     
 
-                  <mat-icon class="me-2 pointer position-relative" color="primary" style="z-index: 99999" (click)="onAddUser()" matTooltipPosition="above" matTooltipClass="custom-tooltip" matTooltip="click to edit">edit</mat-icon>
+                  <mat-icon class="me-2 pointer position-relative" color="primary" style="z-index: 99999" (click)="onUpdateUser(row)" matTooltipPosition="above" matTooltipClass="custom-tooltip" matTooltip="click to edit">edit</mat-icon>
 
 
                   <mat-icon class="pointer position-relative" (click)="onDelete()" style="z-index: 99999" color="warn" matTooltipPosition="above" matTooltipClass="custom-tooltip"  matTooltip="click to delete">delete</mat-icon>

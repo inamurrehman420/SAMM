@@ -1,10 +1,11 @@
-import { Component } from "@angular/core";
+import { Component, Inject } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { MatDialogRef } from "@angular/material/dialog";
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { ToastrService } from "ngx-toastr";
 import { TeamManagmentService } from "../teamManagment.service";
 import { NgxSpinnerService } from "ngx-spinner";
-import { finalize } from "rxjs";
+import { catchError, finalize } from "rxjs";
+import { DomainUtills } from "src/app/utilities/domain/domain-utils";
 
 @Component({
   selector: "app-add-user",
@@ -16,36 +17,76 @@ export class AddUserComponent {
   private selectedFile: File;
   public avatarURL: any;
   Roles:Role[]=[];
+  visible: boolean=false;
+  domainutil=new DomainUtills();
 
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private _formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<AddUserComponent>,
     private teamManagmentService:TeamManagmentService,
     private toastr: ToastrService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    
   ) {}
 
   ngOnInit(): void {
     this.GetRolesLOV();
     this.userForm();
+    if(this.data){
+      debugger
+      this.usersForm.patchValue(this.data);
+      // console.log(this.domainutil.GetDomain()+this.data.profile_pic_path)
+      // console.log("http://localhost:7001"+this.data.profile_pic_path);
+      if(this.data.profile_pic_path)
+      this.avatarURL = "http://localhost:7001"+this.data.profile_pic_path;
+    }
   }
 
   userForm() {
     this.usersForm = this._formBuilder.group({
-      userId: [0],
+      user_id: [0],
       profile_picture: ["", [Validators.required]],
-      userName: ["", [Validators.required]],
+      full_name: ["", [Validators.required]],
       email: ["", [Validators.required]],
       phone_number: ["", [Validators.required]],
-      password: ["", [Validators.required]],
-      roleId: ["", [Validators.required]],
+      user_password: ["", [Validators.required]],
+      role_id: ["", [Validators.required]],
     });
   }
 
-  onFileSelect(event) {
-    this.selectedFile = event.target.files[0];
-    console.log(this.selectedFile.name);
+  // onFileSelect(event) {
+  //   this.selectedFile = event.target.files[0];
+  // }
+  removeImg(){
+    this.avatarURL = null;
   }
+
+  onFileChange(event) {
+    debugger
+    if (event.target.files && event.target.files[0]) {
+        var filesAmount = event.target.files.length;
+        this.selectedFile = event.target.files[0];
+
+        var Name = this.selectedFile.name.split('.').pop();
+        if (Name != undefined) {
+            if (Name.toLowerCase() == "jpg" || Name.toLowerCase() == "jpeg" || Name.toLowerCase() == "png") {
+                var reader = new FileReader();
+
+                reader.onload = (event: any) => {
+                    this.avatarURL = event.target.result;
+                    this.visible = false;
+                }
+                reader.readAsDataURL(this.selectedFile);
+            } else {
+                this.toastr.error("Only jpeg,jpg and png files are allowed");
+                return;
+            }
+        }
+    } else {
+        this.visible = true;
+    }
+}
 
   changeAvatar(files) {
     if (files.length === 0) {
@@ -75,9 +116,14 @@ export class AddUserComponent {
     )
     .subscribe((res) => {
         if (res.success === true) {
-          this.dialogRef.close(true);
-          this.toastr.success("User Added Successfully", "Success");
+          // this.toastr.success("User Added Successfully", "Success");
           // this.toastr.success('Login Successfully','Success');
+        if (this.avatarURL.includes('base64')) {
+          this.UploadImage();
+        }else{
+          this.dialogRef.close(true);
+          this.toastr.success("Updated Successfully", "Success");
+        }
         } else { 
           this.toastr.error('Something went wrong','Failed');
            
@@ -85,8 +131,27 @@ export class AddUserComponent {
     });    
   }
 
-  onClose() {
-    this.dialogRef.close(true);
+  UploadImage(){
+    this.spinner.show();
+    this.teamManagmentService.UploadProfilePic(this.usersForm.get('user_id').value,this.selectedFile)
+    .pipe(
+        finalize(() => {
+          this.spinner.hide();
+        })
+    )
+    .subscribe((res) => {
+        if (res.success === true) {
+          this.dialogRef.close(true);
+          this.toastr.success("User Added Successfully", "Success");
+        } else { 
+          this.toastr.error('Something went wrong','Failed');
+           
+        }
+    });    
+  }
+
+  onClose(val) {
+    this.dialogRef.close(val);
   }
 
 

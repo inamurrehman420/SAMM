@@ -12,7 +12,7 @@ export class TeamManagmentService {
   GetUser(formData: any) {
     let obj = {
       "page":1,
-      "limit":10
+      "limit":100
   }
     return this._dataService.genericServiceCaller(REQUESTTYPE.POST, 'user/get-all-users', obj)
   }
@@ -34,4 +34,16 @@ export class TeamManagmentService {
   }
     return this._dataService.genericServiceCaller(REQUESTTYPE.POST, 'role/get-all-roles', obj)
   }
+
+  
+  UploadProfilePic(user_id, file: File) {
+debugger
+    var formData = new FormData();
+    formData.append('user_id', user_id);
+    formData.append('file', file);    
+
+    return this._dataService.genericServiceCaller(REQUESTTYPE.POST, 'user/upload-profile', formData)
+    
+}
+
 }

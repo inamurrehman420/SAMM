@@ -47,6 +47,23 @@ export class TeamManagmentComponent implements OnInit{
       }
     });
   }
+  getImg(val){
+    return "http://localhost:7001"+val;
+  }
+
+  onUpdateUser(data:any): void {
+    const dialogRef = this.dialog.open(AddUserComponent, {
+      width: "70%",
+      height: "auto",
+      data:data
+    });
+
+    dialogRef.afterClosed().subscribe((data) => { 
+      if (data === true) {
+        this.GetUser();
+      }
+    });
+  }
 
   displayedColumns: string[] = [
     "id",
