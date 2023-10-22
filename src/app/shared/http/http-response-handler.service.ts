@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Observable, throwError } from 'rxjs';
 
 @Injectable()
 export class HttpResponseHandler {
   constructor(
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService,
   ) {}
 
   /**
@@ -68,16 +70,16 @@ export class HttpResponseHandler {
    * @param responseBody
    */
   private handleUnauthorized(responseBody: any): void {
-    localStorage.removeItem("user");
+    localStorage.clear()
     // logout
-    this.router.navigate(['/login']);
+    this.router.navigate(['/sign-in']);
   }
 
   /**
    * Shows notification errors when server response status is 403
    */
   private handleForbidden(): void {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/sign-in']);
   }
 
   /**
@@ -139,5 +141,6 @@ export class HttpResponseHandler {
    * @param message
    */
   private showNotificationError(title: string, message: string): void {
+    this.toastr.error(message,title);
   }
 }

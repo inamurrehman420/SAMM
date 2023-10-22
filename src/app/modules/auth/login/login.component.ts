@@ -8,6 +8,7 @@ import { AuthService } from "../auth.service";
 import { finalize } from "rxjs";
 import { __assign } from "tslib";
 import { NgxSpinnerService } from "ngx-spinner";
+import { responseData } from "src/app/models/response/response";
 
 @Component({
   selector: "app-login",
@@ -47,7 +48,7 @@ export class LoginComponent implements OnInit {
            this.spinner.hide();
         })
     )
-    .subscribe((res) => {
+    .subscribe((res:responseData<any>) => {
         console.log(res);
         if (res.success === true) {
           localStorage.setItem("UserInfo",JSON.stringify(res.data))
@@ -55,12 +56,10 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl('/dashboard');
    
         } else { 
-          this.toastr.error('Something went wrong','Failed');
+          this.toastr.error(res.message,'Failed');
            
         }
     });
-
-    this.router.navigateByUrl('/dashboard');
    
     // const dialogRef = this.dialog.open(OtpComponent, {
     //   width: "25%",

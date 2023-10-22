@@ -19,7 +19,7 @@ export class HttpResponseInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     debugger
     let userinfo = JSON.parse(localStorage.getItem("UserInfo"))
-    let access_token =  userinfo.accessToken;
+    let access_token =  userinfo?.accessToken;
     if(!access_token){
       access_token = '';
     }

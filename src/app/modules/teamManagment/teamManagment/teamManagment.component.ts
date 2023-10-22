@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
-import { MatPaginator } from "@angular/material/paginator";
+import { MatPaginator, PageEvent } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
 import { DeleteComponent } from "src/app/shared/delete/delete.component";
@@ -34,6 +34,11 @@ export class TeamManagmentComponent implements OnInit{
 
   searchSelect = new FormControl("");
   searchList: string[] = ["Name", "Email", "Phone Number", "Role"];
+  length = 50;
+  pageSize = 5;
+  pageIndex = 0;
+  pageSizeOptions = [5, 10, 25];
+
 
   onAddUser(): void {
     const dialogRef = this.dialog.open(AddUserComponent, {
@@ -64,7 +69,11 @@ export class TeamManagmentComponent implements OnInit{
       }
     });
   }
-
+  handlePageEvent(e: PageEvent) {
+    this.pageSize = e.pageSize;
+    this.pageIndex = e.pageIndex;
+    this.GetUser();
+  }
   displayedColumns: string[] = [
     "id",
     "name",
@@ -110,10 +119,10 @@ export class TeamManagmentComponent implements OnInit{
       console.log(data);
     });
   }
-
+  
   GetUser(){
     this.spinner.show();
-    this.teamManagmentService.GetUser({})
+    this.teamManagmentService.GetUser({page:this.pageIndex+1,limit:this.pageSize})
     .pipe(
         finalize(() => {
           this.spinner.hide();
@@ -123,8 +132,10 @@ export class TeamManagmentComponent implements OnInit{
         console.log(res);
         if (res.success === true) {
           this.dataSource =new MatTableDataSource(res.data);
-          this.dataSource.paginator = this.paginator;
-          this.dataSource.sort = this.sort;
+          // this.dataSource.paginator = this.paginator;
+          // this.dataSource.sort = this.sort;
+          // this.dataSource.paginator.length = res.data.total_records;
+          this.length = res.data[0].total_records;
           // this.toastr.success('Login Successfully','Success');
         } else { 
           this.toastr.error('Something went wrong','Failed');

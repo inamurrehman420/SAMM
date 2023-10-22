@@ -9,11 +9,7 @@ export class TeamManagmentService {
   constructor(private _dataService: DataService) { }
 
 
-  GetUser(formData: any) {
-    let obj = {
-      "page":1,
-      "limit":100
-  }
+  GetUser(obj:any) {
     return this._dataService.genericServiceCaller(REQUESTTYPE.POST, 'user/get-all-users', obj)
   }
 
