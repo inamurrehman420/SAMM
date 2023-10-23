@@ -33,8 +33,9 @@ export class SidebarComponent {
       {
         label: "Recipe management",
         icon: "bi bi-minecart-loaded",
-        routerLink: "/appointments",
+        routerLink: "/recipe",
       },
+      
       {
         label: "User Management",
         icon: "bi bi-sliders2-vertical",

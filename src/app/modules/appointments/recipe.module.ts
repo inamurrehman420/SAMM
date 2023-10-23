@@ -1,7 +1,3 @@
-import { ClientOnboardingRoutingModule } from "./client-onboarding-routing.module";
-import { AddClientComponent } from "./add-client/add-client.component";
-import { ClientOnboardingComponent } from "./client-onboarding/client-onboarding.component";
-
 import { LOCALE_ID, NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
@@ -14,29 +10,35 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
-import { MatCheckboxModule } from "@angular/material/checkbox";
-import { MatChipsModule } from "@angular/material/chips";
-import { MatNativeDateModule } from "@angular/material/core";
-import { MatDatepickerModule } from "@angular/material/datepicker";
-import { MatDialogModule } from "@angular/material/dialog";
+import { MatTableModule } from "@angular/material/table";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSortModule } from "@angular/material/sort";
-import { MatTableModule } from "@angular/material/table";
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatNativeDateModule } from "@angular/material/core";
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MatChipsModule } from "@angular/material/chips";
 import { MatTooltipModule } from "@angular/material/tooltip";
-import { MatStepperModule } from "@angular/material/stepper";
+import { SharedModule } from "primeng/api";
 import { NgxMatTimepickerModule } from "ngx-mat-timepicker";
 import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
-import { SharedModule } from "primeng/api";
 import { PipesModule } from "src/app/shared/pipes";
+import { AddRecipeComponent } from "./add-recipe/add-recipe.component";
+import { RecipeComponent } from "./recipe-list/recipe.component";
+import { RecipeModuleRoutingModule } from "./recipe-routing.module";
+
 const lang = "en-US";
 @NgModule({
-  declarations: [AddClientComponent, ClientOnboardingComponent],
+  declarations: [
+    AddRecipeComponent,
+    RecipeComponent
+  ],
   imports: [
     CommonModule,
-    ClientOnboardingRoutingModule,
+    PipesModule,
+    RecipeModuleRoutingModule,
     PrimengModulesImportModule,
     FormsModule,
-    PipesModule,
     ReactiveFormsModule,
     NgApexchartsModule,
     MatCardModule,
@@ -55,11 +57,10 @@ const lang = "en-US";
     MatCheckboxModule,
     MatChipsModule,
     MatTooltipModule,
-    MatStepperModule,
     SharedModule,
     NgxMatTimepickerModule.setLocale(lang),
     NgxMaterialTimepickerModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: lang }],
 })
-export class ClientOnboardingModule {}
+export class RecipeModule {}

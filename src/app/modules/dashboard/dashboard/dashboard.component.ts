@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AddAppointmentComponent } from '../../appointments/add-appointment/add-appointment.component';
 
 interface Report {
   value: string;
@@ -28,18 +27,6 @@ export class DashboardComponent {
     ngOnInit() {
     }
 
-    onAddAppointment(){
-      const dialogRef = this.dialog.open(AddAppointmentComponent, {
-        width: '70%',
-        height: 'auto',
-      });
-  
-      dialogRef.afterClosed().subscribe((data) => {
-        this.dataFromDialog = data.form;
-        if (data.clicked === 'submit') {
-          console.log('Sumbit button clicked');
-        }
-      });
-    }
+   
 
 }

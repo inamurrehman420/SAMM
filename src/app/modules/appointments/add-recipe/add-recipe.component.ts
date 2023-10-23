@@ -4,16 +4,16 @@ import { MatDialogRef } from "@angular/material/dialog";
 import { ToastrService } from "ngx-toastr";
 
 @Component({
-  selector: "app-add-appointment",
-  templateUrl: "./add-appointment.component.html",
-  styleUrls: ["./add-appointment.component.scss"],
+  selector: "app-add-recipe",
+  templateUrl: "./add-recipe.component.html",
+  styleUrls: ["./add-recipe.component.scss"],
 })
-export class AddAppointmentComponent implements OnInit {
+export class AddRecipeComponent implements OnInit {
   selectedTime: any;
   addAppointmentForm: FormGroup;
   constructor(
     private _formBuilder: FormBuilder,
-    private dialogRef: MatDialogRef<AddAppointmentComponent>,
+    private dialogRef: MatDialogRef<AddRecipeComponent>,
     private toastr: ToastrService
   ) {}
 

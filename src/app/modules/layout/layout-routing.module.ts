@@ -23,9 +23,9 @@ const routes: Routes = [
       {
         path: "appointments",
         loadChildren: () =>
-          import("src/app/modules/appointments/appointments.module").then(
-            (m) => m.AppointmentModule
-          ),
+          import("src/app/modules/appointments/recipe.module").then(
+            (m) => m.RecipeModule
+                      ),
       },
 
       {
@@ -35,15 +35,7 @@ const routes: Routes = [
             (m) => m.TeamManagmentModule
           ),
       },
-      {
-        path: "clientOnboarding",
-        loadChildren: () =>
-          import("src/app/modules/client-onboarding/client-onboarding.module").then(
-            (m) => m.ClientOnboardingModule
-          ),
-      },
-
-      {
+     {
         path: "userLogs",
         loadChildren: () =>
           import("src/app/modules/userLogs/userLogs.module").then(
@@ -51,13 +43,7 @@ const routes: Routes = [
           ),
       },
 
-      {
-        path: "companyOnboarding",
-        loadChildren: () =>
-          import(
-            "src/app/modules/companyOnboarding/companyOnboarding.module"
-          ).then((m) => m.CompanyOnboardingModule),
-      },
+     
     ],
   },
 

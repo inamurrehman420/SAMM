@@ -2,7 +2,6 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { LoginComponent } from "./modules/auth/login/login.component";
 import { LayoutComponent } from "./modules/layout/layout/layout.component";
-import { AppointmentActivityComponent } from "./modules/appointments/appointment-activity/appointment-activity.component";
 import { ForgotPasswordComponent } from "./modules/auth/forgot-password/forgot-password.component";
 import { ResetPasswordComponent } from "./modules/auth/reset-password/reset-password.component";
 import { SettingsComponent } from "./modules/layout/settings/settings.component";
@@ -75,10 +74,10 @@ const routes: Routes = [
       },
 
       {
-        path: "appointments",
+        path: "recipe",
         loadChildren: () =>
-          import("src/app/modules/appointments/appointments.module").then(
-            (m) => m.AppointmentModule
+          import("src/app/modules/appointments/recipe.module").then(
+            (m) => m.RecipeModule
           ),
       },
       {
@@ -95,22 +94,7 @@ const routes: Routes = [
             (m) => m.TeamManagmentModule
           ),
       },
-      {
-        path: "clientOnboarding",
-        loadChildren: () =>
-          import("src/app/modules/client-onboarding/client-onboarding.module").then(
-            (m) => m.ClientOnboardingModule
-          ),
-      },
-      {
-        path: "companyOnboarding",
-        loadChildren: () =>
-          import(
-            "src/app/modules/companyOnboarding/companyOnboarding.module"
-          ).then((m) => m.CompanyOnboardingModule),
-      },
-
-      { path: "**", redirectTo: "404-not-found" },
+     { path: "**", redirectTo: "404-not-found" },
     ],
   },
 ];
