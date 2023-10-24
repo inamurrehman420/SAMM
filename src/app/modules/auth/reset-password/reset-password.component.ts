@@ -1,8 +1,13 @@
 import { Component } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { OtpComponent } from "../otp/otp.component";
 import { MatDialog } from "@angular/material/dialog";
+import { AuthService } from "../auth.service";
+import { ToastrService } from "ngx-toastr";
+import { responseData } from "src/app/models/response/response";
+import { NgxSpinnerService } from "ngx-spinner";
+import { finalize } from "rxjs";
 
 @Component({
   selector: "app-reset-password",
@@ -12,36 +17,57 @@ import { MatDialog } from "@angular/material/dialog";
 export class ResetPasswordComponent {
   selectedTime: any;
   resetPasswordForm: FormGroup;
+  token:any;
 
   constructor(
     private _formBuilder: FormBuilder,
     private router: Router,
     private dialog: MatDialog,
-    private dialogRef: MatDialog
+    private dialogRef: MatDialog,
+    private _authService: AuthService,
+    private toaster:ToastrService,
+    private route: ActivatedRoute,
+    private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
     this.resetForm();
+    this.route.queryParams
+      .subscribe(params => {
+        this.token = params;
+      }
+    )
+    
   }
 
   resetForm() {
     this.resetPasswordForm = this._formBuilder.group({
-      old_password: ["", [Validators.required]],
-      new_password: ["", [Validators.required]],
-      confirm_password: ["", [Validators.required]],
+      newPassword: ["", [Validators.required]],
+      confirmPassword: ["", [Validators.required]],
     });
   }
 
   onSubmit() {
-    const dialogRef = this.dialog.open(OtpComponent, {
-      width: "25%",
-      height: "auto",
-    });
-
-    dialogRef.afterClosed().subscribe((data) => {
-      if (data) {
-        console.log(data);
+    this.spinner.show()
+    const body = {
+      ...this.token,
+      ...this.resetPasswordForm.value
+    }
+    this._authService
+    .ResetPassword(body)
+    .pipe(
+      finalize(() => {
+        this.spinner.hide();
+      })
+    )
+    .subscribe((resp:responseData<any>)=>{
+      if(resp.success){
+        this.toaster.success(resp.message,'Success');
+        this.router.navigate(['/sign-in'])
       }
-    });
+      else{
+          this.toaster.error(resp.message,'Error');
+      }
+    })
   }
 }
