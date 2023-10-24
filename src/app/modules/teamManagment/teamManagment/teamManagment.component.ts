@@ -109,15 +109,32 @@ export class TeamManagmentComponent implements OnInit{
     }
   }
 
-  onDelete() {
+  onDelete(id) {
     const dialogRef = this.dialog.open(DeleteComponent, {
       width: "24%",
       height: "auto",
     });
 
     dialogRef.afterClosed().subscribe((data) => {
-      console.log(data);
-    });
+      if (data === true) {
+        this.spinner.show();
+        this.teamManagmentService.RemoveUser(id)
+        .pipe(
+            finalize(() => {
+              this.spinner.hide();
+            })
+        )
+        .subscribe((res) => {
+            if (res.success === true) {
+              this.toastr.success('Deleted','Success');
+            } else { 
+              this.toastr.error('Something went wrong','Failed');
+               
+            }
+        });
+      } 
+      }
+    )
   }
   
   GetUser(){

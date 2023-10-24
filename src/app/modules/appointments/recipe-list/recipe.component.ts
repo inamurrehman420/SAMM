@@ -12,16 +12,9 @@ import { ToastrService } from "ngx-toastr";
 import { finalize } from "rxjs";
 import { TeamManagmentService } from "../../teamManagment/teamManagment.service";
 import { UserData } from "../../teamManagment/teamManagment/teamManagment.component";
+import { RecipeService } from "../recipe.service";
 
-export interface RecipeData {
-  date: string;
-  appointment_time: string;
-  client: string;
-  user: string;
-  task: string;
-  notes: string;
-  location: string;
-}
+
 
 
 @Component({
@@ -32,7 +25,7 @@ export interface RecipeData {
 export class RecipeComponent {
 
   ngOnInit() {
-    this.GetUser();
+    this.GetRecipe();
   }
 
   searchSelect = new FormControl("");
@@ -43,7 +36,7 @@ export class RecipeComponent {
   pageSizeOptions = [5, 10, 25];
 
 
-  onAddUser(): void {
+  onAddRecipe(): void {
     const dialogRef = this.dialog.open(AddRecipeComponent, {
       width: "70%",
       height: "auto",
@@ -51,7 +44,7 @@ export class RecipeComponent {
 
     dialogRef.afterClosed().subscribe((data) => { 
       if (data === true) {
-        this.GetUser();
+        this.GetRecipe();
       }
     });
   }
@@ -59,31 +52,19 @@ export class RecipeComponent {
     return "http://localhost:7001"+val;
   }
 
-  onUpdateUser(data:any): void {
-    const dialogRef = this.dialog.open(AddRecipeComponent, {
-      width: "70%",
-      height: "auto",
-      data:data
-    });
+ 
 
-    dialogRef.afterClosed().subscribe((data) => { 
-      if (data === true) {
-        this.GetUser();
-      }
-    });
-  }
   handlePageEvent(e: PageEvent) {
     this.pageSize = e.pageSize;
     this.pageIndex = e.pageIndex;
-    this.GetUser();
+    this.GetRecipe();
   }
   displayedColumns: string[] = [
-    "id",
-    "name",
-    "email",
-    "role_name",
-    "created_by",
-    "action",
+            "recipe_id",
+            "recipe_name",
+            "recipe_description",
+            "created_by",
+            "action",
   ];
   dataSource: MatTableDataSource<UserData>;
 
@@ -92,9 +73,10 @@ export class RecipeComponent {
 
   constructor(private dialog: MatDialog,
               private dialogRef: MatDialog,
-              private teamManagmentService:TeamManagmentService,
+              private recipeService:RecipeService,
               private toastr: ToastrService,
-              private spinner: NgxSpinnerService,) {
+              private spinner: NgxSpinnerService,
+              private _router:Router) {
    
   }
 
@@ -112,27 +94,42 @@ export class RecipeComponent {
     }
   }
 
-  onDelete() {
+  onDelete(id) {
     const dialogRef = this.dialog.open(DeleteComponent, {
       width: "24%",
       height: "auto",
     });
 
     dialogRef.afterClosed().subscribe((data) => {
-      console.log(data);
-    });
+      if (data === true) {
+        this.spinner.show();
+        this.recipeService.RemoveRecipe(id)
+        .pipe(
+            finalize(() => {
+              this.spinner.hide();
+            })
+        )
+        .subscribe((res) => {
+            if (res.success === true) {
+              this.toastr.success('Deleted','Success');
+            } else { 
+              this.toastr.error('Something went wrong','Failed');
+               
+            }
+        });
+      } 
+      }
+    )
   }
   
-  GetUser(){
+  GetRecipe(){
     this.spinner.show();
-    this.teamManagmentService.GetUser({page:this.pageIndex+1,limit:this.pageSize})
+    this.recipeService.GetRecipe({page:this.pageIndex+1,limit:this.pageSize})
     .pipe(
         finalize(() => {
           this.spinner.hide();
         })
-    )
-    .subscribe((res) => {
-        console.log(res);
+    ).subscribe((res) => {
         if (res.success === true) {
           this.dataSource =new MatTableDataSource(res.data);
           // this.dataSource.paginator = this.paginator;

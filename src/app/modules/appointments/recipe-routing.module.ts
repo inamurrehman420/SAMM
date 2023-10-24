@@ -8,9 +8,12 @@ const routes: Routes = [
     path: "",
     component: RecipeComponent,
   },
-
   {
     path: "add-recipe",
+    component: AddRecipeComponent,
+  },
+  {
+    path: "add-recipe/:id",
     component: AddRecipeComponent,
   },
 ];

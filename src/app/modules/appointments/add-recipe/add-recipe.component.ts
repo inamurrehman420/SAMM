@@ -1,7 +1,11 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { MatDialogRef } from "@angular/material/dialog";
+import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ActivatedRoute } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
+import { Subscription, finalize, pipe } from "rxjs";
+import { RecipeService } from "../recipe.service";
+import { NgxSpinnerService } from "ngx-spinner";
+import { MatTableDataSource } from "@angular/material/table";
 
 @Component({
   selector: "app-add-recipe",
@@ -10,78 +14,114 @@ import { ToastrService } from "ngx-toastr";
 })
 export class AddRecipeComponent implements OnInit {
   selectedTime: any;
-  addAppointmentForm: FormGroup;
+  recipeForm: FormGroup;
+  private routeSub : Subscription;
+  id:any;
+  Title="Add Recipe";
   constructor(
     private _formBuilder: FormBuilder,
-    private dialogRef: MatDialogRef<AddRecipeComponent>,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private route: ActivatedRoute,
+    private recipeService:RecipeService,
+    private spinner: NgxSpinnerService,
   ) {}
 
   ngOnInit(): void {
-    this.appointmentForm();
+    this.RecipeForm();
+    debugger
+    this.routeSub  = this.route.params.subscribe(params => {
+      if(params['id']){
+        this.Title="Update Recipe"
+        this.recipeForm.controls["recipe_id"].setValue(Number(params['id']));
+        this.getIngrediants();
+    }
+    });
+
+   
   }
 
-  appointmentForm() {
-    this.addAppointmentForm = this._formBuilder.group({
-      start_date: ["", [Validators.required]],
-      location: ["", [Validators.required]],
-      start_time: ["", [Validators.required]],
-      end_time: ["", [Validators.required]],
-      client: ["", [Validators.required]],
-      user: ["", [Validators.required]],
-      todoTask: ["", [Validators.required]],
-      check: ["", [Validators.required]],
+ 
+  getRecipe(){}
+  getIngrediants(){
+    this.spinner.show();
+    this.recipeService.GetIngrediantsByRecipeId(this.recipeForm.controls["recipe_id"].value)
+    .pipe(
+        finalize(() => {
+          this.spinner.hide();
+        })
+    ).subscribe((res) => {
+        if (res.success === true) {
+          debugger
+         this.recipeForm.patchValue(res.data);
+         res.data.ingrediants.forEach(i => {
+          this.ingrediants().push(this.newIngrediant(i.recipe_id,i.ingrediant_name,i.ingrediant_type,i.ingrediant_sequence,i.ingrediant_cooking_time,i.ingrediant_steering_type));
+         });
+          // this.toastr.success('Login Successfully','Success');
+        } else { 
+          this.toastr.error('Something went wrong','Failed');
+           
+        }
     });
   }
 
-  required: boolean = !1;
-  maskConfig = {
-    mask: [
-      new RegExp("([0-9]|0[0-9]|1[0-9]|2[0-3])"),
-      new RegExp("[0-1]?[0-9]|2[0-3]"),
-      ":",
-      new RegExp("[0-5]"),
-      new RegExp("[0-9]"),
-    ],
-
-    showMask: false,
-    guide: true,
-    placeholderChar: "-",
-  };
-
-  timeMaskOptions = {
-    mask: [/\d/, /\d/, ":", /\d/, /\d/],
-    placeholder: "",
-    pattern: /^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/,
-    keepCharPositions: true,
-    guide: false,
-  };
-
-  @ViewChild("timepicker") timepicker: any;
-
-  openFromIcon(timepicker1: { open: () => void }) {
-    if (!this.addAppointmentForm.get("start_time").disabled) {
-      timepicker1.open();
-    }
-  }
-
-  openFromIcon1(timepicker: { open: () => void }) {
-    if (!this.addAppointmentForm.get("end_time").disabled) {
-      timepicker.open();
-    }
-  }
-
-  onClear($event: Event) {
-    this.addAppointmentForm.get("start_time").setValue(null);
-    this.addAppointmentForm.get("end_time").setValue(null);
-  }
 
   onSubmit() {
-    this.dialogRef.close(true);
-    this.toastr.success("Appointment Submit Successfully", "Success");
+  //   this.dialogRef.close(true);
+  //   this.toastr.success("Appointment Submit Successfully", "Success");
   }
 
   onClose() {
-    this.dialogRef.close(true);
+  //   this.dialogRef.close(true);
   }
+
+// Dynamic Work
+//   createform(){
+//     this.featureForm = this._formBuilder.group({
+//         Id:null,
+//         MainIcon:null,
+//         Headings: this._formBuilder.array([]),
+//     });
+// }
+
+RecipeForm() {
+  this.recipeForm = this._formBuilder.group({
+    recipe_id: [0],
+    recipe_name: ["", [Validators.required]],
+    recipe_description: ["", [Validators.required]],
+    ingrediants: this._formBuilder.array([]),
+  });
+}
+
+ingrediants(): FormArray {
+    return this.recipeForm.get('ingrediants') as FormArray;
+}
+
+newIngrediant(recipe_id= null,ingrediant_name= null,ingrediant_type= null,ingrediant_sequence= null,ingrediant_cooking_time= null,ingrediant_steering_type= null,): FormGroup {
+  debugger 
+  return this._formBuilder.group({
+      recipe_id:recipe_id,
+      ingrediant_name:ingrediant_name,
+      ingrediant_type: ingrediant_type,
+      ingrediant_sequence:ingrediant_sequence,
+      ingrediant_cooking_time:ingrediant_cooking_time,
+      ingrediant_steering_type:ingrediant_steering_type,
+
+    });
+}
+
+addIngrediants() {
+    // @ts-ignore
+    // if (this.featureForm.controls.Headings.length == 16) {
+    //     this.toastrService.error("Maximum 16 Ingrediants are allowed", "Error")
+    //     return
+    // }
+
+    this.ingrediants().push(this.newIngrediant());
+}
+
+removeIngrediants(empIndex: number) {
+    this.ingrediants().removeAt(empIndex);
+    // this.imageUrl.splice(empIndex,1);
+    // this.images.splice(empIndex,1);
+}
 }
