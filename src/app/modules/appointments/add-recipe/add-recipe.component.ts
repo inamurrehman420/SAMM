@@ -18,6 +18,9 @@ export class AddRecipeComponent implements OnInit {
   private routeSub : Subscription;
   id:any;
   Title="Add Recipe";
+  edibleCounter:any;
+  spicesCounter:any;
+
   constructor(
     private _formBuilder: FormBuilder,
     private toastr: ToastrService,
@@ -28,7 +31,7 @@ export class AddRecipeComponent implements OnInit {
 
   ngOnInit(): void {
     this.RecipeForm();
-    debugger
+    
     this.routeSub  = this.route.params.subscribe(params => {
       if(params['id']){
         this.Title="Update Recipe"
@@ -40,8 +43,6 @@ export class AddRecipeComponent implements OnInit {
    
   }
 
- 
-  getRecipe(){}
   getIngrediants(){
     this.spinner.show();
     this.recipeService.GetIngrediantsByRecipeId(this.recipeForm.controls["recipe_id"].value)
@@ -51,7 +52,7 @@ export class AddRecipeComponent implements OnInit {
         })
     ).subscribe((res) => {
         if (res.success === true) {
-          debugger
+          
          this.recipeForm.patchValue(res.data);
          res.data.ingrediants.forEach(i => {
           this.ingrediants().push(this.newIngrediant(i.recipe_id,i.ingrediant_name,i.ingrediant_type,i.ingrediant_sequence,i.ingrediant_cooking_time,i.ingrediant_steering_type));
@@ -66,8 +67,24 @@ export class AddRecipeComponent implements OnInit {
 
 
   onSubmit() {
-  //   this.dialogRef.close(true);
-  //   this.toastr.success("Appointment Submit Successfully", "Success");
+    this.spinner.show();
+    this.recipeService.AddUpdateRecipe(Object.assign({...this.recipeForm.value}))
+    .pipe(
+        finalize(() => {
+          this.spinner.hide();
+        })
+    )
+    .subscribe((res) => {
+        if (res.success === true) {
+          // this.toastr.success("User Added Successfully", "Success");
+          // this.toastr.success('Login Successfully','Success');
+     
+          this.toastr.success("Updated Successfully", "Success");
+        } else { 
+          this.toastr.error('Something went wrong','Failed');
+           
+        }
+    });   
   }
 
   onClose() {
@@ -97,9 +114,8 @@ ingrediants(): FormArray {
 }
 
 newIngrediant(recipe_id= null,ingrediant_name= null,ingrediant_type= null,ingrediant_sequence= null,ingrediant_cooking_time= null,ingrediant_steering_type= null,): FormGroup {
-  debugger 
+   
   return this._formBuilder.group({
-      recipe_id:recipe_id,
       ingrediant_name:ingrediant_name,
       ingrediant_type: ingrediant_type,
       ingrediant_sequence:ingrediant_sequence,
@@ -120,7 +136,13 @@ addIngrediants() {
 }
 
 removeIngrediants(empIndex: number) {
+  
     this.ingrediants().removeAt(empIndex);
+    if(this.ingrediants().getRawValue().at(3).ingrediant_type == '1')
+      this.edibleCounter--;
+    else if(this.ingrediants().getRawValue().at(3).ingrediant_type == '2')
+    this.spicesCounter--;
+  
     // this.imageUrl.splice(empIndex,1);
     // this.images.splice(empIndex,1);
 }

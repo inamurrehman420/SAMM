@@ -34,7 +34,7 @@ export class AddUserComponent {
     this.GetRolesLOV();
     this.userForm();
     if(this.data){
-      debugger
+      
       this.usersForm.patchValue(this.data);
       // console.log(this.domainutil.GetDomain()+this.data.profile_pic_path)
       // console.log("http://localhost:7001"+this.data.profile_pic_path);
@@ -63,7 +63,7 @@ export class AddUserComponent {
   }
 
   onFileChange(event) {
-    debugger
+    
     if (event.target.files && event.target.files[0]) {
         var filesAmount = event.target.files.length;
         this.selectedFile = event.target.files[0];
@@ -164,7 +164,7 @@ export class AddUserComponent {
           })
       )
       .subscribe((res) => {
-        debugger
+        
           if (res.success === true) {
             
             this.Roles =res.data;

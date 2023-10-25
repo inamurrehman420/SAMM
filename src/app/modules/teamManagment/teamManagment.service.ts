@@ -33,7 +33,7 @@ export class TeamManagmentService {
 
   
   UploadProfilePic(user_id, file: File) {
-debugger
+
     var formData = new FormData();
     formData.append('user_id', user_id);
     formData.append('file', file);    

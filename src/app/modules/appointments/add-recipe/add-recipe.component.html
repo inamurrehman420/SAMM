@@ -136,11 +136,10 @@
                   <div class="flex" style="align-items: self-end;">
                   <mat-form-field class="w-3/4 mt-5 title-input" floatLabel="always">
                       <mat-label>Type</mat-label>
-                      <input matInput
+                             <mat-select  matInput
                              maxlength="500"
                              [formControlName]="'ingrediant_type'"
                              placeholder="Type">
-                             <mat-select>
                               <mat-option value="1">
                                       Edible
                               </mat-option>
@@ -175,27 +174,15 @@
               </div>
           </div>
 
-          <div class="col-lg-2 pt-3">
-            <div class="flex" style="align-items: self-end;">
-            <mat-form-field class="w-3/4 mt-5 title-input" floatLabel="always">
-                <mat-label>Cooking time</mat-label>
-                <input matInput
-                       maxlength="500"
-                       [formControlName]="'ingrediant_cooking_time'"
-                       placeholder="Title">
-            </mat-form-field>
-            </div>
-        </div>
-
+        
         <div class="col-lg-3  pt-3">
           <div class="flex" style="align-items: self-end;">
           <mat-form-field class="w-3/4 mt-5 title-input" floatLabel="always">
               <mat-label>Steering type</mat-label>
-              <input matInput
+                     <mat-select matInput
                      maxlength="500"
                      [formControlName]="'ingrediant_steering_type'"
                      placeholder="Type">
-                     <mat-select>
                       <mat-option value="1">
                               Low
                       </mat-option>
