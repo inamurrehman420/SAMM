@@ -1,300 +1,382 @@
 <div class="container">
+
+    <!-- Dashboard Title -->
     <div class="row">
         <div class="col-lg-6">
             <div class="text-2xl font-bold">Dashboard</div>
-
         </div>
     </div>
 
-
-
-
+    <!-- Recipe Card and Add Button -->
     <div class="row mt-3">
-        <div class="col-lg-4">
-
-            <mat-form-field class="me-3 w-100">
-                <mat-label>Download Reports</mat-label>
-                <mat-select>
-                    <mat-option>
-                        <button mat-button>
-                            <mat-icon class="text-primary icon-btn">cloud_download</mat-icon>
-                            Client Report
-                        </button>
-                    </mat-option>
-                    <mat-option>
-                        <button mat-button>
-                            <mat-icon class="text-primary icon-btn">cloud_download</mat-icon>
-                            Appointment Report
-                        </button>
-                    </mat-option>
-                    <mat-option>
-                        <button mat-button>
-                            <mat-icon class="text-primary icon-btn">cloud_download</mat-icon>
-                            Operational Report
-                        </button>
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
+        <div class="col-lg-6">
+            <div class="recipe-card">
+                <img src="assets/machine.webp" style="width: 100%;" alt="Stuffed Meat with Tomato and Broccoli" class="img-fluid">
+                <div class="recipe-title rounded shadow">
+                    My Smart
+                    <br>  Kitchen Appliance
+                </div>
+                <div class="ingredient-list">
+                    <h3 class="mt-4">Automatic Meal Maker: Your Personal Robot Chef</h3>
+                    <p>loram description</p>
+                </div>
+            </div>
         </div>
-        <div class="col-lg-8 text-end place-self-end">
+        <div class="col-lg-6 text-end ">
             <!-- (click)="onAddAppointment()" -->
-
-            <button color="primary"   mat-raised-button>
+            <button mat-raised-button color="primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <mat-icon>add</mat-icon>
-                Add Recipe
+                Add Device
             </button>
         </div>
-
     </div>
-    
-    <div class="mt-8">
-        <div class="row">
-                    <div class="col-lg-6">
-                       <mat-card class="px-4 py-2" style="height: 486px; overflow: auto;">
 
-                           <div class="row">
-                               <div class="col-lg-12 px-0">
-                                   <mat-card-title class="mt-3">
-                                       User Details
-                                   </mat-card-title>
-                               </div>
-                           </div>
-                           <div class="row mt-3">
-                               <div class="col-lg-12 mb-3 shadow-sm rounded border-b-blue-900 border-2">
-                                   <div class="row">
-                                       <div class="col-lg-6 align-self-center">
-                                           <mat-card-subtitle >
-                                               <span class="text-primary">Admin Appointment with Usama:</span>
-                                               <p class="mb-0 italic">Model town Islamabad</p>
-                                           </mat-card-subtitle>
-                                       </div>
+    <!-- Slick Carousel -->
+    <div class="row mt-3">
+        <div class="col-12">
 
-                                       <div class="col-lg-6 ">
-                                           <mat-card-content class="py-2">
-                                               <div class="row">
-                                                   <div class="col-lg-6 ">
-                                                       <div class="d-grid">
-                                                           <span class="fw-bold">
-                                                               Date:
-                                                           </span>
-                                                           <span>
-                                                               10/10/2023
-                                                           </span>
-                                                       </div>
-                                                   </div>
-                                                   <div class="col-lg-6">
-
-                                                       <div class="d-grid">
-                                                           <span class="fw-bold">
-                                                               Time:
-                                                           </span>
-                                                           <span>
-                                                               02:30 PM - 04:30
-                                                           </span>
-                                                       </div>
-
-                                                   </div>
-                                               </div>
-                                           </mat-card-content>
-                                       </div>
-                                   </div>
+            <!-- Dashboard Title -->
+            <div class="row mb-3">
+                <div class="col-lg-6">
+                    <div class="text-2xl font-bold">Recipes</div>
+                </div>
+            </div>
+            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img class="card-img-top" src="https://www.vegrecipesofindia.com/wp-content/uploads/2016/07/cutting-chai-recipe-17.jpg" alt="Card image">
+                                    <div class="card-body">
+                                        <h3 class="card-title underline">Tea</h3>
+                                        <div class="flex justify-between">
+                                            <p class="fw-bold">
+                                                Type
+                                            </p>
+                                            <p>
+                                                Loram
+                                            </p>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <p class="fw-bold">
+                                                Quantity
+                                            </p>
+                                            <p>
+                                                Loram
+                                            </p>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <p class="fw-bold">
+                                                Temperature
+                                            </p>
+                                            <p>
+                                                Loram
+                                            </p>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <p class="fw-bold">
+                                                Cooking Time
+                                            </p>
+                                            <p>
+                                                Loram
+                                            </p>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <p class="fw-bold">
+                                                Cooking Speed
+                                            </p>
+                                            <p>
+                                                Loram
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-
-                               <div class="col-lg-12 mb-3 shadow-sm rounded border-b-blue-900 border-2">
-                                   <div class="row">
-                                       <div class="col-lg-6 align-self-center">
-                                        <mat-card-subtitle >
-                                            <span class="text-primary">Admin Appointment with Usama:</span>
-                                            <p class="mb-0 italic">Model town Islamabad</p>
-                                        </mat-card-subtitle>
-                                       </div>
-                                       <div class="col-lg-6 ">
-                                           <mat-card-content class="py-2">
-                                               <div class="row">
-                                                   <div class="col-lg-6 ">
-                                                       <div class="d-grid">
-                                                           <span class="fw-bold">
-                                                               Date:
-                                                           </span>
-                                                           <span>
-                                                               10/10/2023
-                                                           </span>
-                                                       </div>
-                                                   </div>
-                                                   <div class="col-lg-6">
-
-                                                       <div class="d-grid">
-                                                           <span class="fw-bold">
-                                                               Time:
-                                                           </span>
-                                                           <span>
-                                                            02:30 PM - 04:30
-                                                        </span>
-                                                       </div>
-
-                                                   </div>
-                                               </div>
-                                           </mat-card-content>
-                                       </div>
-                                   </div>
-                               </div>
-
-                               <div class="col-lg-12 mb-3 shadow-sm rounded border-b-blue-900 border-2">
-                                   <div class="row">
-                                       <div class="col-lg-6 align-self-center">
-                                        <mat-card-subtitle >
-                                            <span class="text-primary">Admin Appointment with Usama:</span>
-                                            <p class="mb-0 italic">Model town Islamabad</p>
-                                        </mat-card-subtitle>
-                                       </div>
-                                       <div class="col-lg-6 ">
-                                           <mat-card-content class="py-2">
-                                               <div class="row">
-                                                   <div class="col-lg-6 ">
-                                                       <div class="d-grid">
-                                                           <span class="fw-bold">
-                                                               Date:
-                                                           </span>
-                                                           <span>
-                                                               10/10/2023
-                                                           </span>
-                                                       </div>
-                                                   </div>
-                                                   <div class="col-lg-6">
-
-                                                       <div class="d-grid">
-                                                           <span class="fw-bold">
-                                                               Time:
-                                                           </span>
-                                                           <span>
-                                                            02:30 PM - 04:30
-                                                        </span>
-                                                       </div>
-
-                                                   </div>
-                                               </div>
-                                           </mat-card-content>
-
-                                       </div>
-                                   </div>
-
-
-
-                               </div>
-                               <div class="col-lg-12 mb-3 shadow-sm rounded border-b-blue-900 border-2">
-                                   <div class="row">
-                                       <div class="col-lg-6 align-self-center">
-                                        <mat-card-subtitle >
-                                            <span class="text-primary">Admin Appointment with Usama:</span>
-                                            <p class="mb-0 italic">Model town Islamabad</p>
-                                        </mat-card-subtitle>
-                                       </div>
-                                       <div class="col-lg-6 ">
-                                           <mat-card-content class="py-2">
-                                               <div class="row">
-                                                   <div class="col-lg-6 ">
-                                                       <div class="d-grid">
-                                                           <span class="fw-bold">
-                                                               Date:
-                                                           </span>
-                                                           <span>
-                                                               10/10/2023
-                                                           </span>
-                                                       </div>
-                                                   </div>
-                                                   <div class="col-lg-6">
-
-                                                       <div class="d-grid">
-                                                           <span class="fw-bold">
-                                                               Time:
-                                                           </span>
-                                                           <span>
-                                                            02:30 PM - 04:30
-
-                                                           </span>
-                                                       </div>
-
-                                                   </div>
-                                               </div>
-                                           </mat-card-content>
-
-                                       </div>
-                                   </div>
-                               </div>
-
-
-                               <div class="col-lg-12 mb-3 shadow-sm rounded border-b-blue-900 border-2">
-                                   <div class="row">
-                                       <div class="col-lg-6 align-self-center">
-                                        <mat-card-subtitle >
-                                            <span class="text-primary">Admin Appointment with Usama:</span>
-                                            <p class="mb-0 italic">Model town Islamabad</p>
-                                        </mat-card-subtitle>
-                                       </div>
-                                       <div class="col-lg-6 ">
-                                           <mat-card-content class="py-2">
-                                               <div class="row">
-                                                   <div class="col-lg-6 ">
-                                                       <div class="d-grid">
-                                                           <span class="fw-bold">
-                                                               Date:
-                                                           </span>
-                                                           <span>
-                                                               10/10/2023
-                                                           </span>
-                                                       </div>
-                                                   </div>
-                                                   <div class="col-lg-6">
-
-                                                       <div class="d-grid">
-                                                           <span class="fw-bold">
-                                                               Time:
-                                                           </span>
-                                                           <span>
-                                                            02:30 PM - 04:30
-                                                        </span>
-                                                       </div>
-
-                                                   </div>
-                                               </div>
-                                           </mat-card-content>
-
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                       </mat-card>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img class="card-img-top" src="https://www.vegrecipesofindia.com/wp-content/uploads/2016/07/cutting-chai-recipe-17.jpg" alt="Card image">
+                                    <div class="card-body">
+                                        <h3 class="card-title underline">Tea</h3>
+                                        <div class="flex justify-between">
+                                            <p class="fw-bold">
+                                                Type
+                                            </p>
+                                            <p>
+                                                Loram
+                                            </p>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <p class="fw-bold">
+                                                Quantity
+                                            </p>
+                                            <p>
+                                                Loram
+                                            </p>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <p class="fw-bold">
+                                                Temperature
+                                            </p>
+                                            <p>
+                                                Loram
+                                            </p>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <p class="fw-bold">
+                                                Cooking Time
+                                            </p>
+                                            <p>
+                                                Loram
+                                            </p>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <p class="fw-bold">
+                                                Cooking Speed
+                                            </p>
+                                            <p>
+                                                Loram
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img class="card-img-top" src="https://www.vegrecipesofindia.com/wp-content/uploads/2016/07/cutting-chai-recipe-17.jpg" alt="Card image">
+                                    <div class="card-body">
+                                        <h3 class="card-title underline">Tea</h3>
+                                        <div class="flex justify-between">
+                                            <p class="fw-bold">
+                                                Type
+                                            </p>
+                                            <p>
+                                                Loram
+                                            </p>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <p class="fw-bold">
+                                                Quantity
+                                            </p>
+                                            <p>
+                                                Loram
+                                            </p>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <p class="fw-bold">
+                                                Temperature
+                                            </p>
+                                            <p>
+                                                Loram
+                                            </p>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <p class="fw-bold">
+                                                Cooking Time
+                                            </p>
+                                            <p>
+                                                Loram
+                                            </p>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <p class="fw-bold">
+                                                Cooking Speed
+                                            </p>
+                                            <p>
+                                                Loram
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                
-                    <div class="col-lg-6">
-                        <mat-card style="height: 486px;">
-                            <mat-card-content>
-                                <app-bar-chart></app-bar-chart>
-
-                            </mat-card-content>
-                        </mat-card>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img class="card-img-top" src="https://www.vegrecipesofindia.com/wp-content/uploads/2016/07/cutting-chai-recipe-17.jpg" alt="Card image">
+                                    <div class="card-body">
+                                        <h3 class="card-title underline">Tea</h3>
+                                        <div class="flex justify-between">
+                                            <p class="fw-bold">
+                                                Type
+                                            </p>
+                                            <p>
+                                                Loram
+                                            </p>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <p class="fw-bold">
+                                                Quantity
+                                            </p>
+                                            <p>
+                                                Loram
+                                            </p>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <p class="fw-bold">
+                                                Temperature
+                                            </p>
+                                            <p>
+                                                Loram
+                                            </p>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <p class="fw-bold">
+                                                Cooking Time
+                                            </p>
+                                            <p>
+                                                Loram
+                                            </p>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <p class="fw-bold">
+                                                Cooking Speed
+                                            </p>
+                                            <p>
+                                                Loram
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img class="card-img-top" src="https://www.vegrecipesofindia.com/wp-content/uploads/2016/07/cutting-chai-recipe-17.jpg" alt="Card image">
+                                    <div class="card-body">
+                                        <h3 class="card-title underline">Tea</h3>
+                                        <div class="flex justify-between">
+                                            <p class="fw-bold">
+                                                Type
+                                            </p>
+                                            <p>
+                                                Loram
+                                            </p>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <p class="fw-bold">
+                                                Quantity
+                                            </p>
+                                            <p>
+                                                Loram
+                                            </p>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <p class="fw-bold">
+                                                Temperature
+                                            </p>
+                                            <p>
+                                                Loram
+                                            </p>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <p class="fw-bold">
+                                                Cooking Time
+                                            </p>
+                                            <p>
+                                                Loram
+                                            </p>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <p class="fw-bold">
+                                                Cooking Speed
+                                            </p>
+                                            <p>
+                                                Loram
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img class="card-img-top" src="https://www.vegrecipesofindia.com/wp-content/uploads/2016/07/cutting-chai-recipe-17.jpg" alt="Card image">
+                                    <div class="card-body">
+                                        <h3 class="card-title underline">Tea</h3>
+                                        <div class="flex justify-between">
+                                            <p class="fw-bold">
+                                                Type
+                                            </p>
+                                            <p>
+                                                Loram
+                                            </p>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <p class="fw-bold">
+                                                Quantity
+                                            </p>
+                                            <p>
+                                                Loram
+                                            </p>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <p class="fw-bold">
+                                                Temperature
+                                            </p>
+                                            <p>
+                                                Loram
+                                            </p>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <p class="fw-bold">
+                                                Cooking Time
+                                            </p>
+                                            <p>
+                                                Loram
+                                            </p>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <p class="fw-bold">
+                                                Cooking Speed
+                                            </p>
+                                            <p>
+                                                Loram
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <!-- ... add more items (groups of 3 images) -->
+                </div>
+                <button style="width: 60px;" class="carousel-control-prev bg-primary" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button  style="width: 60px;"  class="carousel-control-next bg-primary" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
 
- </div>                 
+        </div>
     </div>
 
-
-    <div class="mt-8">
-        <div class="row">
-            <div class="col-lg-12">
-                <mat-card>
-                    <mat-card-content>
-
-                        <app-line-chart></app-line-chart>
-
-                    </mat-card-content>
-                </mat-card>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Add Device</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <mat-form-field class="w-100">
+                    <mat-label>Device ID</mat-label>
+                    <input
+                            matInput
+                            placeholder="Enter Name"
+                            [formControlName]="'device_id'"
+                            required>
+                    <mat-error>Recipe Name is Required</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="modal-footer">
+                <button mat-raised-button color="warn" data-bs-dismiss="modal">Close</button>
+                <button mat-raised-button color="primary">Save changes</button>
             </div>
         </div>
     </div>
-
-
 </div>
-
-

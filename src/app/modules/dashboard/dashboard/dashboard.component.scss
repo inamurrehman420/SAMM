@@ -21,3 +21,26 @@
 .icon-btn{
     margin-right: 18px !important;
 }
+
+.recipe-card {
+    max-width: 100%;
+    margin: 20px auto;
+    position: relative;
+    background: #373737;
+}
+.recipe-title {
+    position: absolute;
+    top: 15%;
+    right: 10px;
+    background-color: #e48d26;
+    padding: 10px 20px;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.ingredient-list {
+    background-color: white;
+    padding: 30px 20px;
+    margin-top: -40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

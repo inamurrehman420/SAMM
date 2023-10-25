@@ -36,7 +36,9 @@
               "node_modules/ngx-spinner/animations/timer.css"
             ],
             "scripts": [
-              "src/assets/table/table.js"
+              "src/assets/table/table.js",
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/slick-carousel/slick/slick.min.js"
             ]
           },
           "configurations": {
