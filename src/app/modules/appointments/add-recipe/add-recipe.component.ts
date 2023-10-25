@@ -67,6 +67,25 @@ export class AddRecipeComponent implements OnInit {
 
 
   onSubmit() {
+    var edible=0;
+    var spice=0;
+    this.ingrediants().getRawValue().forEach(element => {
+      if(element.ingrediant_type == '1'){
+        edible++;
+      }
+      else if(element.ingrediant_type == '2'){
+        spice++;
+      }
+      });
+      if(edible>8){
+        this.toastr.error("Maximum 8 edibles are allowed","Error")
+        return;
+      }
+      if(spice>8){
+        this.toastr.error("Maximum 8 spices are allowed","Error")
+        return;
+      }
+
     this.spinner.show();
     this.recipeService.AddUpdateRecipe(Object.assign({...this.recipeForm.value}))
     .pipe(
@@ -127,10 +146,10 @@ newIngrediant(recipe_id= null,ingrediant_name= null,ingrediant_type= null,ingred
 
 addIngrediants() {
     // @ts-ignore
-    // if (this.featureForm.controls.Headings.length == 16) {
-    //     this.toastrService.error("Maximum 16 Ingrediants are allowed", "Error")
-    //     return
-    // }
+    if (this.recipeForm.controls.ingrediants.length == 16) {
+        this.toastr.error("Maximum 16 Ingrediants are allowed", "Error")
+        return
+    }
 
     this.ingrediants().push(this.newIngrediant());
 }
@@ -138,10 +157,10 @@ addIngrediants() {
 removeIngrediants(empIndex: number) {
   
     this.ingrediants().removeAt(empIndex);
-    if(this.ingrediants().getRawValue().at(3).ingrediant_type == '1')
-      this.edibleCounter--;
-    else if(this.ingrediants().getRawValue().at(3).ingrediant_type == '2')
-    this.spicesCounter--;
+    // if(this.ingrediants().getRawValue().at(3).ingrediant_type == '1')
+    //   this.edibleCounter--;
+    // else if(this.ingrediants().getRawValue().at(3).ingrediant_type == '2')
+    // this.spicesCounter--;
   
     // this.imageUrl.splice(empIndex,1);
     // this.images.splice(empIndex,1);
