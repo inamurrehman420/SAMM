@@ -158,6 +158,27 @@ foreignObject{
   //transition: transform 0.6s ease;
   margin-right: 10px; /* Gap between slides */
 }
+/* Custom Scrollbar Styles */
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #e48d26  #373737;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px; /* Width of the scrollbar */
+}
+
+*::-webkit-scrollbar-track {
+  background: #373737; /* Color of the scrollbar track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #e48d26; /* Color of the scroll thumb */
+  border-radius: 6px; /* Roundness of the scroll thumb */
+  border: 3px solid #373737; /* Creates padding around scroll thumb */
+}
 
 .carousel-item img {
   width: 100%;
