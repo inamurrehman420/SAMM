@@ -45,298 +45,39 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="row">
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img class="card-img-top" src="https://www.vegrecipesofindia.com/wp-content/uploads/2016/07/cutting-chai-recipe-17.jpg" alt="Card image">
+                            <div  *ngFor="let recipe of Recipes" class="col-md-4">
+                                <div  class="card">
+                                    <img class="card-img-top" src="https://www.licious.in/blog/wp-content/uploads/2020/12/Hyderabadi-chicken-Biryani.jpg" alt="Card image">
                                     <div class="card-body">
-                                        <h3 class="card-title underline">Tea</h3>
+                                        <h3 class="card-title underline"> {{recipe.recipe_name}}</h3>
                                         <div class="flex justify-between">
                                             <p class="fw-bold">
-                                                Type
+                                                Recipe Name:
                                             </p>
                                             <p>
-                                                Loram
+                                                {{recipe.recipe_name}}
                                             </p>
                                         </div>
                                         <div class="flex justify-between">
                                             <p class="fw-bold">
-                                                Quantity
+                                                Description
                                             </p>
                                             <p>
-                                                Loram
+                                                {{recipe.recipe_description}}
                                             </p>
                                         </div>
-                                        <div class="flex justify-between">
-                                            <p class="fw-bold">
-                                                Temperature
-                                            </p>
-                                            <p>
-                                                Loram
-                                            </p>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <p class="fw-bold">
-                                                Cooking Time
-                                            </p>
-                                            <p>
-                                                Loram
-                                            </p>
-                                        </div>
-                                        <div class="flex justify-between">
+                                        <!-- <div class="flex justify-between">
                                             <p class="fw-bold">
                                                 Cooking Speed
                                             </p>
                                             <p>
                                                 Loram
                                             </p>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img class="card-img-top" src="https://www.vegrecipesofindia.com/wp-content/uploads/2016/07/cutting-chai-recipe-17.jpg" alt="Card image">
-                                    <div class="card-body">
-                                        <h3 class="card-title underline">Tea</h3>
-                                        <div class="flex justify-between">
-                                            <p class="fw-bold">
-                                                Type
-                                            </p>
-                                            <p>
-                                                Loram
-                                            </p>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <p class="fw-bold">
-                                                Quantity
-                                            </p>
-                                            <p>
-                                                Loram
-                                            </p>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <p class="fw-bold">
-                                                Temperature
-                                            </p>
-                                            <p>
-                                                Loram
-                                            </p>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <p class="fw-bold">
-                                                Cooking Time
-                                            </p>
-                                            <p>
-                                                Loram
-                                            </p>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <p class="fw-bold">
-                                                Cooking Speed
-                                            </p>
-                                            <p>
-                                                Loram
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img class="card-img-top" src="https://www.vegrecipesofindia.com/wp-content/uploads/2016/07/cutting-chai-recipe-17.jpg" alt="Card image">
-                                    <div class="card-body">
-                                        <h3 class="card-title underline">Tea</h3>
-                                        <div class="flex justify-between">
-                                            <p class="fw-bold">
-                                                Type
-                                            </p>
-                                            <p>
-                                                Loram
-                                            </p>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <p class="fw-bold">
-                                                Quantity
-                                            </p>
-                                            <p>
-                                                Loram
-                                            </p>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <p class="fw-bold">
-                                                Temperature
-                                            </p>
-                                            <p>
-                                                Loram
-                                            </p>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <p class="fw-bold">
-                                                Cooking Time
-                                            </p>
-                                            <p>
-                                                Loram
-                                            </p>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <p class="fw-bold">
-                                                Cooking Speed
-                                            </p>
-                                            <p>
-                                                Loram
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img class="card-img-top" src="https://www.vegrecipesofindia.com/wp-content/uploads/2016/07/cutting-chai-recipe-17.jpg" alt="Card image">
-                                    <div class="card-body">
-                                        <h3 class="card-title underline">Tea</h3>
-                                        <div class="flex justify-between">
-                                            <p class="fw-bold">
-                                                Type
-                                            </p>
-                                            <p>
-                                                Loram
-                                            </p>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <p class="fw-bold">
-                                                Quantity
-                                            </p>
-                                            <p>
-                                                Loram
-                                            </p>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <p class="fw-bold">
-                                                Temperature
-                                            </p>
-                                            <p>
-                                                Loram
-                                            </p>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <p class="fw-bold">
-                                                Cooking Time
-                                            </p>
-                                            <p>
-                                                Loram
-                                            </p>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <p class="fw-bold">
-                                                Cooking Speed
-                                            </p>
-                                            <p>
-                                                Loram
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img class="card-img-top" src="https://www.vegrecipesofindia.com/wp-content/uploads/2016/07/cutting-chai-recipe-17.jpg" alt="Card image">
-                                    <div class="card-body">
-                                        <h3 class="card-title underline">Tea</h3>
-                                        <div class="flex justify-between">
-                                            <p class="fw-bold">
-                                                Type
-                                            </p>
-                                            <p>
-                                                Loram
-                                            </p>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <p class="fw-bold">
-                                                Quantity
-                                            </p>
-                                            <p>
-                                                Loram
-                                            </p>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <p class="fw-bold">
-                                                Temperature
-                                            </p>
-                                            <p>
-                                                Loram
-                                            </p>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <p class="fw-bold">
-                                                Cooking Time
-                                            </p>
-                                            <p>
-                                                Loram
-                                            </p>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <p class="fw-bold">
-                                                Cooking Speed
-                                            </p>
-                                            <p>
-                                                Loram
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img class="card-img-top" src="https://www.vegrecipesofindia.com/wp-content/uploads/2016/07/cutting-chai-recipe-17.jpg" alt="Card image">
-                                    <div class="card-body">
-                                        <h3 class="card-title underline">Tea</h3>
-                                        <div class="flex justify-between">
-                                            <p class="fw-bold">
-                                                Type
-                                            </p>
-                                            <p>
-                                                Loram
-                                            </p>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <p class="fw-bold">
-                                                Quantity
-                                            </p>
-                                            <p>
-                                                Loram
-                                            </p>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <p class="fw-bold">
-                                                Temperature
-                                            </p>
-                                            <p>
-                                                Loram
-                                            </p>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <p class="fw-bold">
-                                                Cooking Time
-                                            </p>
-                                            <p>
-                                                Loram
-                                            </p>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <p class="fw-bold">
-                                                Cooking Speed
-                                            </p>
-                                            <p>
-                                                Loram
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                          
                         </div>
                     </div>
                     <!-- ... add more items (groups of 3 images) -->
