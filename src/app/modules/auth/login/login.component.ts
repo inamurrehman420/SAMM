@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
   }
 
   onGoogleSigninSuccess(){
-    window.location.href = this.domainUtills.GetDomain() + 'auth/google?mobile=true'
+    window.location.href = this.domainUtills.GetDomain() + 'auth/google'
   }
 
   signInF() {
