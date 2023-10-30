@@ -19,13 +19,15 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { GoogleSigninModule } from '../google-signin-module';
+import { CallbackComponent } from './callback/callback.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     OtpComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    CallbackComponent
   ],
   imports: [
     CommonModule,

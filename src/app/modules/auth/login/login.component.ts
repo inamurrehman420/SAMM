@@ -9,6 +9,7 @@ import { finalize } from "rxjs";
 import { __assign } from "tslib";
 import { NgxSpinnerService } from "ngx-spinner";
 import { responseData } from "src/app/models/response/response";
+import { DomainUtills } from "src/app/utilities/domain/domain-utils";
 
 @Component({
   selector: "app-login",
@@ -28,14 +29,13 @@ export class LoginComponent implements OnInit {
     private authService:AuthService,
     private spinner: NgxSpinnerService,
   ) {}
-
+  private domainUtills = new DomainUtills();
   ngOnInit(): void {
     this.signInF();
   }
 
-  onGoogleSigninSuccess(data){
-    debugger
-    console.log(data);
+  onGoogleSigninSuccess(){
+    window.location.href = this.domainUtills.GetDomain() + 'auth/google?mobile=true'
   }
 
   signInF() {
