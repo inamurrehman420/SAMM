@@ -18,6 +18,7 @@ import { SharedModule } from 'primeng/api';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { GoogleSigninModule } from '../google-signin-module';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
   imports: [
     CommonModule,
     AuthRoutingModule,
+    GoogleSigninModule,
     ReactiveFormsModule,
     PrimengModulesImportModule,
     MatFormFieldModule,

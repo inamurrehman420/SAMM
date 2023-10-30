@@ -33,6 +33,11 @@ export class LoginComponent implements OnInit {
     this.signInF();
   }
 
+  onGoogleSigninSuccess(data){
+    debugger
+    console.log(data);
+  }
+
   signInF() {
     this.signInForm = this._formBuilder.group({
       email: ["", [Validators.required]],

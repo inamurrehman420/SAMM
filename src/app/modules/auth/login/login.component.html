@@ -53,6 +53,9 @@
                                 Submit
                             </button>
                     </div>
+                    <div class="text-right mt-3">
+                        <app-google-sso-login (onSigninSuccess)="onGoogleSigninSuccess($event)"></app-google-sso-login>
+                </div>
                     </div>
                 </div>
             </div>
