@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { OtpComponent } from "../otp/otp.component";
 import { MatDialog } from "@angular/material/dialog";
@@ -44,8 +44,28 @@ export class ResetPasswordComponent {
     this.resetPasswordForm = this._formBuilder.group({
       newPassword: ["", [Validators.required]],
       confirmPassword: ["", [Validators.required]],
+      validators: this.matchValidator('newPassword', 'confirmPassword')
     });
   }
+
+  matchValidator(controlName: string, matchingControlName: string): ValidatorFn {
+    return (abstractControl: AbstractControl) => {
+        const control = abstractControl.get(controlName);
+        const matchingControl = abstractControl.get(matchingControlName);
+
+        if (matchingControl!.errors && !matchingControl!.errors?.['confirmedValidator']) {
+            return null;
+        }
+
+        if (control!.value !== matchingControl!.value) {
+          const error = { confirmedValidator: 'Passwords do not match.' };
+          matchingControl!.setErrors(error);
+          return error;
+        } else {
+          matchingControl!.setErrors(null);
+          return null;
+        }
+    }}
 
   onSubmit() {
     this.spinner.show()
