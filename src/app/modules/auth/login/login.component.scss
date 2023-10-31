@@ -98,6 +98,24 @@
   font-size: 14px;
   color: #a1a1a1;
 }
+
+.google-signin-button {
+  position: relative;
+  background-color: #fff; /* Set your desired background color */
+  border: 1px solid #ccc; /* Set your desired border color */
+  color: #333; /* Set your desired text color */
+}
+
+.google-icon {
+  position: absolute;
+  left: -34px; /* Adjust the left position according to your design */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px; /* Set the width of the Google icon */
+  height: 20px; /* Set the height of the Google icon */
+  margin-right: 10px; /* Adjust the margin to create space between icon and text */
+}
+
 .login-page .fxt-form .form-group .field-icon:before {
   padding: 17px 10px;
 }
