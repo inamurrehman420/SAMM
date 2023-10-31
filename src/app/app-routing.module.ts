@@ -5,6 +5,7 @@ import { LayoutComponent } from "./modules/layout/layout/layout.component";
 import { ForgotPasswordComponent } from "./modules/auth/forgot-password/forgot-password.component";
 import { ResetPasswordComponent } from "./modules/auth/reset-password/reset-password.component";
 import { SettingsComponent } from "./modules/layout/settings/settings.component";
+import { RegisterComponent } from "./modules/auth/register/register.component";
 
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "/dashboard" },
@@ -39,7 +40,17 @@ const routes: Routes = [
       },
     ],
   },
-
+  {
+    path: "",
+    component: RegisterComponent,
+    children: [
+      {
+        path: "register",
+        loadChildren: () =>
+          import("src/app/modules/auth/auth.module").then((m) => m.AuthModule),
+      },
+    ],
+  },
   {
     path: "",
     component: ResetPasswordComponent,
