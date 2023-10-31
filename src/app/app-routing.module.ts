@@ -6,6 +6,7 @@ import { ForgotPasswordComponent } from "./modules/auth/forgot-password/forgot-p
 import { ResetPasswordComponent } from "./modules/auth/reset-password/reset-password.component";
 import { SettingsComponent } from "./modules/layout/settings/settings.component";
 import { RegisterComponent } from "./modules/auth/register/register.component";
+import { CallbackComponent } from "./modules/auth/callback/callback.component";
 
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "/dashboard" },
@@ -16,6 +17,10 @@ const routes: Routes = [
   // path. Below is another redirection for that path to redirect the user to the desired
   // location. This is a small convenience to keep all main routes together here on this file.
   { path: "signed-in-redirect", pathMatch: "full", redirectTo: "/dashboard" },
+  {
+    path:"auth/callback",
+    component:CallbackComponent
+  },
 
   {
     path: "",

@@ -28,4 +28,7 @@ export class AuthService {
   ResetPassword(formData: any) {
     return this._dataService.genericServiceCaller(REQUESTTYPE.POST, 'auth/reset-password', formData)
   }
+  LoginWithGoogle(){
+    return this._dataService.genericServiceCaller(REQUESTTYPE.GET, 'auth/google')
+  }
 }

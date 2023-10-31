@@ -20,6 +20,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { GoogleSigninModule } from '../google-signin-module';
 import { RegisterComponent } from './register/register.component';
+import { CallbackComponent } from './callback/callback.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { RegisterComponent } from './register/register.component';
     OtpComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
-    RegisterComponent
+    RegisterComponent,
+    CallbackComponent
   ],
   imports: [
     CommonModule,
