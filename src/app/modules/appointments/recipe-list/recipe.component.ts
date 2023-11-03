@@ -63,8 +63,8 @@ export class RecipeComponent {
             "recipe_id",
             "recipe_name",
             "recipe_description",
-            "created_by",
             "action",
+            "cook",
   ];
   dataSource: MatTableDataSource<UserData>;
 
