@@ -12,6 +12,7 @@ import { ToastrService } from "ngx-toastr";
 export class SettingsComponent {
   private selectedFile: File;
   public avatarURL: any;
+  resetPasswordForm: FormGroup;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -74,4 +75,6 @@ export class SettingsComponent {
   onClose() {
     this.dialogRef.close(true);
   }
+
+  
 }
