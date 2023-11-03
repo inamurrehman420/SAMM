@@ -1,11 +1,20 @@
-<div class="sidebar">
-    <div class="sidebar-header">
-        <div class="logo d-flex">
-            <img src="assets/logo.svg"/>
+<div class="sidebar shadow-2xl">
+    <div class="sidebar-header mb-4">
+        <div class="logo d-grid justify-items-center">
+<!--            <img src="assets/logo.svg"/>-->
 <!--          <span class="fw-bold ms-4 align-self-center title lg text-white">HEALTHCARE</span>-->
+            <h1 class="mb-0" style="font-size: 36px; font-weight: bold;">
+                SAMM
+            </h1>
+            <p>
+                Smart Automatic Meal Maker
+            </p>
         </div>
     </div>
     <div class="sidebar-menu-container">
+        <label class="mb-2">
+            Home
+        </label>
       <p-panelMenu class="panelMenu-list" [model]="items"></p-panelMenu>
     </div>
   </div>

@@ -75,7 +75,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::before{
   border-bottom-color: transparent;
 }
-
+.p-panelmenu .p-panelmenu-header:not(.p-highlight):not(.p-disabled) > a:hover {
+  .p-menuitem-icon{
+    color: white !important;
+  }
+  .p-menuitem-text{
+    color: white !important;
+  }
+  color: white !important;
+}
 .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::before {
   border-bottom-color: transparent;
 }
@@ -97,7 +105,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 app-layout .layout .sidebar {
-  background: #373737;
+  background: #F4F4F4;
   position: fixed;
   left: 0;
   height: 100%;
