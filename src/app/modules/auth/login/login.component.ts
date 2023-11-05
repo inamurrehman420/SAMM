@@ -28,9 +28,12 @@ export class LoginComponent implements OnInit {
     private toastr: ToastrService,
     private authService:AuthService,
     private spinner: NgxSpinnerService,
-  ) {}
+  ) {
+    localStorage.clear();
+  }
   private domainUtills = new DomainUtills();
   ngOnInit(): void {
+    
     this.signInF();
   }
 
