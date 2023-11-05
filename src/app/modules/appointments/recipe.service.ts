@@ -25,5 +25,11 @@ export class RecipeService {
   GetIngrediantsByRecipeId(id: any) {
     return this._dataService.genericServiceCaller(REQUESTTYPE.GET, `recipe/recipe-detail/${id}`)
   }
+  UploadPic(recipe_id, file: File) {
+    var formData = new FormData();
+    formData.append('recipe_id', recipe_id);
+    formData.append('file', file);    
+    return this._dataService.genericServiceCaller(REQUESTTYPE.POST, 'recipe/upload-recipe', formData)    
+}
 
 }

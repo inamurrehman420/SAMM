@@ -5,7 +5,6 @@ import { ToastrService } from "ngx-toastr";
 import { Subscription, finalize, pipe } from "rxjs";
 import { RecipeService } from "../recipe.service";
 import { NgxSpinnerService } from "ngx-spinner";
-import { MatTableDataSource } from "@angular/material/table";
 
 @Component({
   selector: "app-add-recipe",
@@ -15,6 +14,9 @@ import { MatTableDataSource } from "@angular/material/table";
 export class AddRecipeComponent implements OnInit {
   selectedTime: any;
   recipeForm: FormGroup;
+  private selectedFile: File;
+  public avatarURL: any;
+  visible: boolean=false;
   private routeSub : Subscription;
   id:any;
   Title="Add Recipe";
@@ -38,9 +40,53 @@ export class AddRecipeComponent implements OnInit {
         this.recipeForm.controls["recipe_id"].setValue(Number(params['id']));
         this.getIngrediants();
     }
-    });
+    });   
+  }
 
-   
+  removeImg(){
+    this.avatarURL = null;
+  }
+
+  onFileChange(event) {
+    if (event.target.files && event.target.files[0]) {
+        var filesAmount = event.target.files.length;
+        this.selectedFile = event.target.files[0];
+        var Name = this.selectedFile.name.split('.').pop();
+        if (Name != undefined) {
+            if (Name.toLowerCase() == "jpg" || Name.toLowerCase() == "jpeg" || Name.toLowerCase() == "png") {
+                var reader = new FileReader();
+
+                reader.onload = (event: any) => {
+                    this.avatarURL = event.target.result;
+                    this.visible = false;
+                }
+                reader.readAsDataURL(this.selectedFile);
+            } else {
+                this.toastr.error("Only jpeg,jpg and png files are allowed");
+                return;
+            }
+        }
+    } else {
+        this.visible = true;
+    }
+}
+
+  UploadImage(){
+    this.spinner.show();
+    this.recipeService.UploadPic(this.recipeForm.get('recipe_id').value,this.selectedFile)
+    .pipe(
+        finalize(() => {
+          this.spinner.hide();
+        })
+    )
+    .subscribe((res) => {
+        if (res.success === true) {
+          this.toastr.success("Recipe Added Successfully", "Success");
+        } else { 
+          this.toastr.error('Something went wrong','Failed');
+           
+        }
+    });    
   }
 
   getIngrediants(){
@@ -51,11 +97,17 @@ export class AddRecipeComponent implements OnInit {
           this.spinner.hide();
         })
     ).subscribe((res) => {
-        if (res.success === true) {
-          
-         this.recipeForm.patchValue(res.data);
+        if (res.success === true) {  
+          debugger        
+        //  this.recipeForm.patchValue(res.data);
+        if(res.data.recipe_pic)
+        this.avatarURL = "http://localhost:7001"+res.data.recipe_pic;
+
+         this.recipeForm.controls["recipe_id"].setValue(res.data.recipe_id);
+         this.recipeForm.controls["recipe_name"].setValue(res.data.recipe_name);
+         this.recipeForm.controls["recipe_description"].setValue(res.data.recipe_description);
          res.data.ingrediants.forEach(i => {
-          this.ingrediants().push(this.newIngrediant(i.recipe_id,i.ingrediant_name,i.ingrediant_type,i.ingrediant_sequence,i.ingrediant_cooking_time,i.ingrediant_steering_type));
+          this.ingrediants().push(this.newIngrediant(i.recipe_id,i.ingrediant_name,i.ingrediant_type,i.ingrediant_quantity,i.ingrediant_cooking_time,i.ingrediant_steering_type,i.ingrediant_temperature));
          });
           // this.toastr.success('Login Successfully','Success');
         } else { 
@@ -97,8 +149,13 @@ export class AddRecipeComponent implements OnInit {
         if (res.success === true) {
           // this.toastr.success("User Added Successfully", "Success");
           // this.toastr.success('Login Successfully','Success');
-     
-          this.toastr.success("Updated Successfully", "Success");
+          this.recipeForm.controls["recipe_id"].setValue(res.data.recipe_id);
+          // this.toastr.success("Updated Successfully", "Success");
+          if (this.avatarURL.includes('base64')) {
+            this.UploadImage();
+          }else{
+            this.toastr.success("Updated Successfully", "Success");
+          }
         } else { 
           this.toastr.error('Something went wrong','Failed');
            
@@ -132,14 +189,15 @@ ingrediants(): FormArray {
     return this.recipeForm.get('ingrediants') as FormArray;
 }
 
-newIngrediant(recipe_id= null,ingrediant_name= null,ingrediant_type= null,ingrediant_sequence= null,ingrediant_cooking_time= null,ingrediant_steering_type= null,): FormGroup {
+newIngrediant(recipe_id= null,ingrediant_name= null,ingrediant_type= null,ingrediant_quantity= null,ingrediant_cooking_time= null,ingrediant_steering_type= null,ingrediant_temperature=null): FormGroup {
    
   return this._formBuilder.group({
       ingrediant_name:ingrediant_name,
       ingrediant_type: ingrediant_type,
-      ingrediant_sequence:ingrediant_sequence,
+      ingrediant_quantity:ingrediant_quantity,
       ingrediant_cooking_time:ingrediant_cooking_time,
       ingrediant_steering_type:ingrediant_steering_type,
+      ingrediant_temperature:ingrediant_temperature,
 
     });
 }

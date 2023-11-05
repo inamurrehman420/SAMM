@@ -10,27 +10,20 @@
                         </div>
                     </div>
                     <div class="fxt-form">
-                        <form
-                                class="mt-6" [formGroup]="">
+                        <div
+                                class="mt-6" [formGroup]="signUpForm">
 
                             <div class="row">
 
                                 <mat-form-field class="mb-3" >
-                                    <mat-label>First Name</mat-label>
+                                    <mat-label>Full Name</mat-label>
                                     <input
                                             matInput
-                                            placeholder="Enter First Name"
-                                            [formControlName]="'firstname'"
+                                            placeholder="Enter Full Name"
+                                            [formControlName]="'full_name'"
                                             required>
                                 </mat-form-field>
-                                <mat-form-field class="mb-3" >
-                                    <mat-label>Last Name</mat-label>
-                                    <input
-                                            matInput
-                                            placeholder="Enter Last Name"
-                                            [formControlName]="'lname'"
-                                            required>
-                                </mat-form-field>
+                               
                                 <mat-form-field class="mb-3" >
                                     <mat-label>Email</mat-label>
                                     <input
@@ -39,13 +32,22 @@
                                             [formControlName]="'email'"
                                             required>
                                 </mat-form-field>
-                                <mat-form-field>
+                                <mat-form-field class="mb-3">
                                     <mat-label>Password</mat-label>
                                     <input
                                             matInput
                                             type="password"
                                             placeholder="Enter Password"
-                                            [formControlName]="'password'"
+                                            [formControlName]="'user_password'"
+                                            required>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Confirm Password</mat-label>
+                                    <input
+                                            matInput
+                                            type="password"
+                                            placeholder="Enter Confirm Password"
+                                            [formControlName]="'confirm_password'"
                                             required>
                                 </mat-form-field>
 
@@ -57,23 +59,23 @@
                                     </label>
                                     <a
                                             class="text-md font-medium ms-2 text-primary-500 hover:underline"
-                                            [routerLink]="['forgot-password']">Sign In
+                                            [routerLink]="['/sign-in']">Sign In
                                     </a>
                                 </div>
 
                             </div>
 
-                        </form>
+                        </div>
                         <div class="text-right mt-3">
-                            <button class="w-100"  mat-raised-button color="primary" >
+                            <button class="w-100"  mat-raised-button color="primary"  (click)="onSubmit()">
                                 Sign Up
                             </button>
                         </div>
                         <div class="text-right mt-3">
                             <!-- <app-google-sso-login (onSigninSuccess)="onGoogleSigninSuccess($event)"></app-google-sso-login> -->
-                            <button class="w-100 google-signin-button text-primary" mat-raised-button  >
+                            <button class="w-100 google-signin-button text-primary" mat-raised-button  (click)="onGoogleSigninSuccess()">
                                 <img src="assets/google-icon.png" alt="Google Icon" class="google-icon">
-                                Sign Up With Google
+                                Login With Google
                             </button>
 
                         </div>

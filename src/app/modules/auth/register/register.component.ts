@@ -9,6 +9,7 @@ import { finalize } from "rxjs";
 import { __assign } from "tslib";
 import { NgxSpinnerService } from "ngx-spinner";
 import { responseData } from "src/app/models/response/response";
+import { DomainUtills } from "src/app/utilities/domain/domain-utils";
 
 @Component({
   selector: "app-register",
@@ -16,7 +17,7 @@ import { responseData } from "src/app/models/response/response";
   styleUrls: ["./register.component.scss"],
 })
 export class RegisterComponent implements OnInit {
-  
+  signUpForm:FormGroup;
   constructor(
     private _formBuilder: FormBuilder,
     private router: Router,
@@ -26,10 +27,46 @@ export class RegisterComponent implements OnInit {
     private authService:AuthService,
     private spinner: NgxSpinnerService,
   ) {}
+  
+  private domainUtills = new DomainUtills();
 
   ngOnInit(): void {
-    
+    this.signInF()
   }
 
+  signInF() {
+    this.signUpForm = this._formBuilder.group({
+      email: ["", [Validators.required]],
+      user_password: ["", [Validators.required]],
+      confirm_password: ["", [Validators.required]],
+      full_name: ["", [Validators.required]],
+      role_id: [3, [Validators.required]],
+    });
+  }
+
+  onSubmit() {
+    this.spinner.show();
+    this.authService.Register(this.signUpForm.value)
+    .pipe(
+        finalize(() => {
+           this.spinner.hide();
+        })
+    )
+    .subscribe((res:responseData<any>) => {
+        if (res.success === true) {
+          // localStorage.setItem("UserInfo",JSON.stringify(res.data))
+          this.toastr.success('Login Successfully','Success');
+          this.router.navigateByUrl('/sign-in');
+   
+        } else { 
+          this.toastr.error(res.message,'Failed');
+           
+        }
+    });
+  }   
+
+  onGoogleSigninSuccess(){
+    window.location.href = this.domainUtills.GetDomain() + 'auth/google'
+  }
 
 }

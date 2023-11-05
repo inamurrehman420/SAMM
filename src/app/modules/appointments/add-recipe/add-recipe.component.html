@@ -26,7 +26,7 @@
                 <input #file type="file" accept='image/*' [hidden]="true" (change)="onFileChange($event)" formControlName="profile_picture"/>
                 <button mat-raised-button color="primary" material-icons (mousedown)="file.click();" *ngIf="!avatarURL"><mat-icon class="text-white me-3">image</mat-icon>Upload Image</button>
             </div> -->
-            <div class="col-lg-12">
+            <div class="col-lg-8">
                 <div class="row mb-3">
 
                     <div class="col-lg-6">
@@ -71,7 +71,15 @@
                     </div>
                 </div>
             </div>
-
+            <div class="col-lg-3 grid align-items-center text-center  justify-items-center">
+                <div *ngIf="avatarURL" class="position-relative ">
+                    <img class="mx-auto border-4  border-b-gray-800 rounded-circle" [src]="avatarURL"  >
+                    <button style="top: 23px;right: 26px;" class="position-absolute text-primary bg-white rounded shadow" mat-button (click)="removeImg()"><mat-icon >cancel</mat-icon>
+                     </button> 
+                </div>
+                <input #file type="file" accept='image/*' [hidden]="true" (change)="onFileChange($event)" />
+                <button mat-raised-button color="primary" material-icons (mousedown)="file.click();" *ngIf="!avatarURL"><mat-icon class="text-white me-3">image</mat-icon>Upload Image</button>
+            </div>
         </div>
     </div>
     <div class="row px-1 ">
@@ -85,7 +93,7 @@
                          style="border-bottom: 2px solid #e48d26">
                         <div
                                 class="">
-                            <b>Ingrediants:</b>
+                            <b>Ingredient:</b>
                         </div>
                         <!--                                        (click)="addProductDetails()"-->
                         <button
@@ -134,16 +142,16 @@
                     </div>
 
                     <div class="row mb-3">
-                        <div class="col-lg-6">
+                        <div class="col-lg-4">
                             <mat-form-field class="w-100  title-input" floatLabel="always">
-                                <mat-label> Ingrediant Name</mat-label>
+                                <mat-label> Ingredient Name</mat-label>
                                 <input matInput
                                        maxlength="500"
                                        [formControlName]="'ingrediant_name'"
                                        placeholder="Ingrediant Name">
                             </mat-form-field>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-4">
                             <mat-form-field class="w-100   title-input" floatLabel="always">
                                 <mat-label>Type</mat-label>
                                 <mat-select matInput
@@ -161,6 +169,15 @@
                             </mat-form-field>
 
                         </div>
+                        <div class="col-lg-4">
+                            <mat-form-field class="w-100  title-input" floatLabel="always">
+                                <mat-label>Temperature</mat-label>
+                                <input matInput
+                                       maxlength="500"
+                                       [formControlName]="'ingrediant_temperature'"
+                                       placeholder="Temperature">
+                            </mat-form-field>
+                        </div>
                     </div>
 
                     <div class="row">
@@ -169,7 +186,7 @@
                                 <mat-label>Quantity</mat-label>
                                 <input matInput
                                        maxlength="500"
-                                       [formControlName]="'ingrediant_sequence'"
+                                       [formControlName]="'ingrediant_quantity'"
                                        placeholder="Quantity">
                             </mat-form-field>
                         </div>
