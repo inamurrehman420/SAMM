@@ -66,6 +66,7 @@ export class SidebarComponent {
   }
 
   onLogout() {
+    localStorage.clear();
     this.router.navigateByUrl("/sign-in");
   }
 }
