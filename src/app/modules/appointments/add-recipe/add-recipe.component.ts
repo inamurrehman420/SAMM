@@ -5,6 +5,7 @@ import { ToastrService } from "ngx-toastr";
 import { Subscription, finalize, pipe } from "rxjs";
 import { RecipeService } from "../recipe.service";
 import { NgxSpinnerService } from "ngx-spinner";
+import { environment }  from "src/environments/environment";
 
 @Component({
   selector: "app-add-recipe",
@@ -101,7 +102,7 @@ export class AddRecipeComponent implements OnInit {
           debugger        
         //  this.recipeForm.patchValue(res.data);
         if(res.data.recipe_pic)
-        this.avatarURL = "http://localhost:7001"+res.data.recipe_pic;
+        this.avatarURL = environment.imageBaseUrl+res.data.recipe_pic;
 
          this.recipeForm.controls["recipe_id"].setValue(res.data.recipe_id);
          this.recipeForm.controls["recipe_name"].setValue(res.data.recipe_name);
