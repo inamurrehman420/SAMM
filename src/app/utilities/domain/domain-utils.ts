@@ -24,7 +24,7 @@ get ApiUrl() {
         if (originalPath.includes("localhost")) {
             // domain = "http://localhost:3000/";
             // domain = "http://localhost:7001/api/";
-            domain = "https://023e-154-192-18-80.ngrok-free.app/api/"; //ngrok
+            domain = "http://sammwebbackend-env-1.eba-vqk24sk3.ap-southeast-2.elasticbeanstalk.com/api/"; //ngrok
 
         }
         return domain;

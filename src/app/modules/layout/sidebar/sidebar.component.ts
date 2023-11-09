@@ -36,11 +36,11 @@ export class SidebarComponent {
         routerLink: "/recipe",
       },
       
-      {
-        label: "User Management",
-        icon: "bi bi-sliders2-vertical",
-        routerLink: "/teamManagment",
-      },
+      // {
+      //   label: "User Management",
+      //   icon: "bi bi-sliders2-vertical",
+      //   routerLink: "/teamManagment",
+      // },
       // {
       //   label: "Activity Logs",
       //   icon: "bi bi-gear-wide",
